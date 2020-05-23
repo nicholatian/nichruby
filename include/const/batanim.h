@@ -327,7 +327,6 @@ enum /* anim_battler */
 	ANIM_BATTLER_DEF_PARTNER
 };
 
-
 /* stereo panning constants [0-255]
  *
  *          0
