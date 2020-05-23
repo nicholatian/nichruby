@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+##       __   _ _____ _______ _     _  ______ _     _ ______  __   __       ##
+##       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         ##
+##       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          ##
+##                                 nichruby                                 ##
+##                                                                          ##
+##                    Copyright © 2020 Alexander Nicholi                    ##
+##                       Released under BSD-2-Clause.                       ##
+##############################################################################
+
+*.txt text eol=lf
+Makefile text eol=lf
+README text eol=lf
+COPYING text eol=lf
+CONTRIBUTING text eol=lf
+COMPILING text eol=lf
+*.s text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.pl text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+
+*.s linguist-language=Assembly
+*.c linguist-language=C
+*.h linguist-language=C
+
+*.pl linguist-vendored
+*.py linguist-vendored
+*.sh linguist-vendored
+Makefile linguist-vendored
+doc/** linguist-vendored
+etc/** linguist-vendored
+data/** linguist-vendored
+util/** linguist-vendored

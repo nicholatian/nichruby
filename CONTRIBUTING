@@ -1,0 +1,30 @@
+*****
+
+nichruby contributor’s guide
+
+*****
+
+1. CURRENT STATUS
+
+The current task is bringing over all of the headers and definitions, reworked
+under the new practises and guidelines. For the time being, outside
+contribution is not realistic, as the aforementioned guidelines will need
+a little documentation first.
+
+2. ROUGH ROADMAP
+
+Here is what the development track looks like so far:
+
+1. Fill in include/const/
+2. Copywrite all of the other headers into include/
+3. Devise some scripts in util/ for processing data/ (some already exist)
+4. Define a predictable schema for a hierarchy of asset data
+5. Migrate all of the asset data into the newly-defined hierarchy
+6. Begin porting the source
+
+3. HOW THIS WORKS
+
+The process here is whole-hog, rather than test-driven. The reason is because
+in most respects it is a clean rewrite, and a good understanding of the engine
+will be necessary in order to realise the goal of an improved codebase anyway.
+It will not be easy, but it will be worth it.

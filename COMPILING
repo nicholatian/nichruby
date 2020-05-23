@@ -1,0 +1,10 @@
+*****
+
+nichruby compilation guide
+
+*****
+
+This project uses GNU Make. It supports job control. It is possible to build
+nichruby on any Unix-like platform, but only Linux and macOS are actively
+used by the maintainer. Other operating systems are not supported. Simply run
+make and the ROM file will be built.

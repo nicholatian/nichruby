@@ -1,0 +1,47 @@
+*****
+
+nichruby
+nicholatian’s clean reimplementation of the pokeruby disassembly
+
+Copyright © 2020 Alexander Nicholi.
+Released under BSD-2-Clause.
+
+*****
+
+1. HOW SO?
+
+Much of my work with computer theory has given me a general foundation upon
+which I may lay well-written, well-behaved code. Beginning with essays such as
+An Ethos for Sustainable Computing, I will outline all of the specific
+practises for maintaining projects like this, along with their rationales.
+
+2. WHY?
+
+The pret work on the Generation III core series decompilations is remarkable.
+Unfortunately, maintaining a matching decompilation has required a lot of
+additional tooling and considerations for the structure of the code and the
+repository. Things are more or less messy, and much of the mess is intractable
+because of that constraint. This is undesirable for anyone using the
+disassemblies to make “ROM hacks”. Furthermore, integrating updates and
+changes is not an easy task for such endeavours, either.
+
+nichruby is a clean reimplementation that is supposed to work exactly like
+vanilla pokeruby. The project gives up byte-for-byte matching of the original
+games so that it becomes practical to use a modern compiler toolchain and sane
+tooling for asset processing. The entire project can be made a lot easier to
+reason about.
+
+As for myself, I want to take this opportunity to demonstrate what I have
+learned about the nature of software. It may serve as a proof for the theories
+I have worked so hard on. After all, it is for the Game Boy Advance.
+
+3. REFERENCES & ADDITIONAL READING
+
+Nicholi, Alexander. An Ethos for Sustainable Computing.
+	<https://nicholatian.com/ethos>
+Nicholi, Alexander. The Injustice of Complexity in Computing.
+	<https://nicholatian.com/injcompl>
+Nicholi, Alexander. Abusive Relationships With Programming Languages.
+	<https://nicholatian.com/plabuse>
+Nicholi, Alexander. Six Tiers of Reasoning in Programming.
+	<https://nicholatian.com/reasoning>
