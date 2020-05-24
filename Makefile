@@ -37,12 +37,18 @@ LDFLAGS := -specs=$(DEVKITARM)/arm-none-eabi/lib/gba.specs
 # sources
 SFILES := \
 	src/crt0.s
-CFILES :=
+CFILES := \
+	src/tv.c
 HFILES := \
 	include/const/ability.h \
 	include/const/batanim.h \
 	include/const/battle.h \
-	include/const/bmovefx.h
+	include/const/bmovefx.h \
+	include/const/maps.h \
+	include/const/moves.h \
+	include/const/species.h \
+	include/gba.h \
+	include/types.h
 IMGFILES :=
 PCMFILES :=
 OFILES := $(SFILES:.s=.s.o) $(CFILES:.c=.c.o) \
