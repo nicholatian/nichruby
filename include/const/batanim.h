@@ -14,16 +14,6 @@
 
 /* This header contains constants for battle animations. */
 
-enum
-{
-	BATANIM_SPRITE_SZ = 8
-};
-
-enum
-{
-	BATANIM_ARGC = 8
-};
-
 /* particle IDs */
 enum /* anim_tag */
 {
