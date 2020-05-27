@@ -9,19 +9,8 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#include "types.h"
+#include "savedata.h"
 
-struct outbreak_mon
+void clr_tvdata( void )
 {
-	pkmnid_t species;
-	move_t move[4];
-	u8 level;
-	loc_t loc;
-};
-
-enum
-{
-	OUTBREAK_CT = 5
-};
-
-static const struct outbreak_mon outbreaks[OUTBREAK_CT] = {};
+}
