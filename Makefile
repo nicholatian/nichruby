@@ -38,6 +38,8 @@ LDFLAGS := -specs=$(DEVKITARM)/arm-none-eabi/lib/gba.specs
 SFILES := \
 	src/crt0.s
 CFILES := \
+	src/outbreak.c \
+	src/savedata.c \
 	src/tv.c
 HFILES := \
 	include/const/ability.h \
@@ -48,6 +50,9 @@ HFILES := \
 	include/const/moves.h \
 	include/const/species.h \
 	include/gba.h \
+	include/map.h \
+	include/mon.h \
+	include/savedata.h \
 	include/types.h
 IMGFILES :=
 PCMFILES :=
