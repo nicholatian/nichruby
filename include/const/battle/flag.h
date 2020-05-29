@@ -9,18 +9,17 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_FLAG_H
+#define INC__CONST_BATTLE_FLAG_H
 
-enum
+enum /* bflag */
 {
-	MAX_BATTLERS_COUNT = 4
+	BFLAG_MAKES_CONTACT = 1 << 0,
+	BFLAG_AFFECTBY_PROTECT = 1 << 1,
+	BFLAG_AFFECTBY_MAGICCOAT = 1 << 2,
+	BFLAG_AFFECTBY_SNATCH = 1 << 3,
+	BFLAG_MIRRORMOVE_COMPAT = 1 << 4,
+	BFLAG_AFFECTBY_KINGSROCK = 1 << 5
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_FLAG_H */

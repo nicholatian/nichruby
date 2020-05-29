@@ -9,18 +9,25 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_NVSTAT_H
+#define INC__CONST_BATTLE_NVSTAT_H
 
-enum
+/* Non-volatile status conditions (NVSTAT)
+ * These persist outside of battle and after switching out */
+
+enum /* nvstat */
 {
-	MAX_BATTLERS_COUNT = 4
+	NVSTAT_NONE,
+	NVSTAT_SLP         = 0x7,
+	NVSTAT_PSN         = 0x8,
+	NVSTAT_BRN         = 0x10,
+	NVSTAT_FRZ         = 0x20,
+	NVSTAT_PAR         = 0x40,
+	NVSTAT_TOX         = 0x80,
+	NVSTAT_TOX_COUNTER = 0xF00,
+	NVSTAT_ANY_PSN     = NVSTAT_PSN | NVSTAT_TOX,
+	NVSTAT_ANY = NVSTAT_SLP | NVSTAT_PSN | NVSTAT_BRN | NVSTAT_FRZ |
+	   NVSTAT_PAR | NVSTAT_TOX
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_NVSTAT_H */

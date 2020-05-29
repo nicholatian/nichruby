@@ -9,18 +9,22 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_FSTAT_H
+#define INC__CONST_BATTLE_FSTAT_H
 
-enum
+/* Field-side status conditions (FSTAT). These affect one party or the
+ * other */
+
+enum /* fstat */
 {
-	MAX_BATTLERS_COUNT = 4
+	FSTAT_REFLECT       = 1 << 0,
+	FSTAT_LIGHTSCREEN   = 1 << 1,
+	FSTAT_4             = 1 << 2,
+	FSTAT_SPIKES        = 1 << 4,
+	FSTAT_SAFEG         = 1 << 5,
+	FSTAT_FUTUREATK     = 1 << 6,
+	FSTAT_MIST          = 1 << 8,
+	FSTAT_SPIKES_DAMAGE = 1 << 9
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_FSTAT_H */

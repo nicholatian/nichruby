@@ -9,18 +9,22 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_OUTCOME_H
+#define INC__CONST_BATTLE_OUTCOME_H
 
-enum
+enum /* boutcome */
 {
-	MAX_BATTLERS_COUNT = 4
+	BOUTCOME_WIN = 1,
+	BOUTCOME_LOSE,
+	BOUTCOME_DRAW,
+	BOUTCOME_PLAYER_FLEE,
+	BOUTCOME_PLAYER_TP,
+	BOUTCOME_MON_FLEE,
+	BOUTCOME_CAUGHT,
+	BOUTCOME_NO_SAFARI_BALLS,
+	BOUTCOME_FORFEIT,
+	BOUTCOME_MON_TP,
+	BOUTCOME_LINK_FLEE = 128
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_OUTCOME_H */

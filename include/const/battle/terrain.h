@@ -9,18 +9,21 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_TERRAIN_H
+#define INC__CONST_BATTLE_TERRAIN_H
 
-enum
+enum /* bterrain */
 {
-	MAX_BATTLERS_COUNT = 4
+	BTERRAIN_GRASS,
+	BTERRAIN_LONG_GRASS,
+	BTERRAIN_SAND,
+	BTERRAIN_UNDERWATER,
+	BTERRAIN_WATER,
+	BTERRAIN_POND,
+	BTERRAIN_MOUNTAIN,
+	BTERRAIN_CAVE,
+	BTERRAIN_BUILDING,
+	BTERRAIN_PLAIN
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_TERRAIN_H */

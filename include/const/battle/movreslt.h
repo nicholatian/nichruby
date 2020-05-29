@@ -9,18 +9,21 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_MOVERESLT_H
+#define INC__CONST_BATTLE_MOVERESLT_H
 
-enum
+enum /* move_result */
 {
-	MAX_BATTLERS_COUNT = 4
+	MOVRESLT_MISSED = 1 << 0,
+	MOVRESLT_SUPEREFF = 1 << 1,
+	MOVRESLT_NOTVERYEFF = 1 << 2,
+	MOVRESLT_NOTAFFECTED = 1 << 3,
+	MOVRESLT_1HKO = 1 << 4,
+	MOVRESLT_FAILED = 1 << 5,
+	MOVRESLT_FOE_ENDURED = 1 << 6,
+	MOVRESLT_FOE_HUNGON = 1 << 7,
+	MOVRESLT_NOEFFECT = MOVRESLT_MISSED |
+	   MOVRESLT_NOTAFFECTED | MOVRESLT_FAILED
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_MOVERESLT_H */

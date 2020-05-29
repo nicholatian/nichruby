@@ -9,18 +9,28 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+#ifndef INC__CONST_BATTLE_TYPE_H
+#define INC__CONST_BATTLE_TYPE_H
 
-enum
+enum /* btype */
 {
-	MAX_BATTLERS_COUNT = 4
+	BTYPE_DOUBLE      = 1 << 0,
+	BTYPE_LINK        = 1 << 1,
+	BTYPE_WILD        = 1 << 2,
+	BTYPE_TRAINER     = 1 << 3,
+	BTYPE_FIRSTBATTLE = 1 << 4,
+	BTYPE_20          = 1 << 5,
+	BTYPE_MULTI       = 1 << 6,
+	BTYPE_SAFARI      = 1 << 7,
+	BTYPE_BATTLETOWER = 1 << 8,
+	BTYPE_WALLY       = 1 << 9,
+	BTYPE_ROAMER      = 1 << 10,
+	BTYPE_EREADER     = 1 << 11,
+	BTYPE_KYOGROUD    = 1 << 12,
+	BTYPE_LEGENDARY   = 1 << 13,
+	BTYPE_REGI        = 1 << 14,
+	BTYPE_LINK_DOUBLE = BTYPE_DOUBLE | BTYPE_LINK |
+	   BTYPE_TRAINER | BTYPE_MULTI,
 };
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
-
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__CONST_BATTLE_TYPE_H */
