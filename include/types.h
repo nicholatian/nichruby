@@ -33,7 +33,7 @@ typedef volatile unsigned int vu32;
 typedef volatile unsigned int vptri;
 
 typedef u16 col_t;
-typedef u16 pkmnid_t;
+typedef u16 monid_t;
 typedef u16 item_t;
 typedef u16 move_t;
 typedef u16 svar_t;
