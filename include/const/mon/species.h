@@ -12,6 +12,4 @@
 #ifndef INC__CONST_MON_SPECIES_H
 #define INC__CONST_MON_SPECIES_H
 
-
-
 #endif /* INC__CONST_MON_SPECIES_H */

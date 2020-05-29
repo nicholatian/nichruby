@@ -12,7 +12,4 @@
 #include "gba.h"
 #include "savedata.h"
 
-void* get_savblk1ptr( void )
-{
-	return (void*)0x2025734;
-}
+void* get_savblk1ptr( void ) { return (void*)0x2025734; }

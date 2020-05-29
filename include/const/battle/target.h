@@ -14,14 +14,14 @@
 
 enum /* target */
 {
-	TARGET_SELECT_MON = 0,
-	TARGET_SPECIAL = 1 << 0,
-	TARGET_UNK2 = 1 << 1,
-	TARGET_RANDOM = 1 << 2,
+	TARGET_SELECT_MON   = 0,
+	TARGET_SPECIAL      = 1 << 0,
+	TARGET_UNK2         = 1 << 1,
+	TARGET_RANDOM       = 1 << 2,
 	TARGET_BOTH_ENEMIES = 1 << 3,
-	TARGET_USER = 1 << 4,
+	TARGET_USER         = 1 << 4,
 	TARGET_ALL_BUT_USER = 1 << 5,
-	TARGET_ENEMY_SIDE = 1 << 6
+	TARGET_ENEMY_SIDE   = 1 << 6
 };
 
 #endif /* INC__CONST_BATTLE_TARGET_H */

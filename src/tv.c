@@ -11,6 +11,4 @@
 
 #include "savedata.h"
 
-void clr_tvdata( void )
-{
-}
+void clr_tvdata( void ) {}

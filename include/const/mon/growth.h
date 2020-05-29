@@ -12,6 +12,4 @@
 #ifndef INC__CONST_MON_GROWTH_H
 #define INC__CONST_MON_GROWTH_H
 
-
-
 #endif /* INC__CONST_MON_GROWTH_H */

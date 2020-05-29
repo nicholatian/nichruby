@@ -16,10 +16,10 @@
 
 enum
 {
-	MON_NICK_LEN = 10,
-	OT_NAME_LEN = 7,
+	MON_NICK_LEN   = 10,
+	OT_NAME_LEN    = 7,
 	BATTLE_STAT_CT = 8,
-	PARTY_SZ = 6
+	PARTY_SZ       = 6
 };
 
 struct mon_substruc_a
@@ -105,8 +105,7 @@ struct box_mon
 	{
 		u32 raw[12];
 		union mon_substruc substruc[4];
-	}
-	secure;
+	} secure;
 };
 
 struct mon
@@ -198,7 +197,7 @@ struct spinda_spot
 	u16 img[16];
 };
 
-struct __attribute__((packed)) lvlup_move
+struct __attribute__( ( packed ) ) lvlup_move
 {
 	u16 move : 9;
 	u16 level : 7;

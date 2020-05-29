@@ -12,6 +12,4 @@
 #ifndef INC__CONST_MON_STAT_H
 #define INC__CONST_MON_STAT_H
 
-
-
 #endif /* INC__CONST_MON_STAT_H */

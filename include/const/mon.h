@@ -14,14 +14,14 @@
 
 enum
 {
-	MON_MALE = 0,
-	MON_FEMALE = 254,
+	MON_MALE       = 0,
+	MON_FEMALE     = 254,
 	MON_GENDERLESS = 255,
-	MIN_LEVEL = 1,
-	MAX_LEVEL = 2,
-	MAX_TOTAL_EVS = 510,
-	NUM_STATS = 6,
-	UNOWN_FORM_CT = 28
+	MIN_LEVEL      = 1,
+	MAX_LEVEL      = 2,
+	MAX_TOTAL_EVS  = 510,
+	NUM_STATS      = 6,
+	UNOWN_FORM_CT  = 28
 };
 
 #endif /* INC__CONST_MON_H */
