@@ -42,11 +42,39 @@ CFILES := \
 	src/savedata.c \
 	src/tv.c
 HFILES := \
+	include/const/battle/abilfx.h \
+	include/const/battle/aiaction.h \
+	include/const/battle/flag.h \
+	include/const/battle/fstat.h \
+	include/const/battle/hitmark.h \
+	include/const/battle/movefx.h \
+	include/const/battle/movreslt.h \
+	include/const/battle/nvstat.h \
+	include/const/battle/outcome.h \
+	include/const/battle/target.h \
+	include/const/battle/terrain.h \
+	include/const/battle/type.h \
+	include/const/battle/vstat.h \
+	include/const/battle/weather.h \
+	include/const/battle/which.h \
+	include/const/battle/xstat.h \
+	include/const/mon/bodycol.h \
+	include/const/mon/data.h \
+	include/const/mon/egggroup.h \
+	include/const/mon/evo.h \
+	include/const/mon/frshipev.h \
+	include/const/mon/growth.h \
+	include/const/mon/nature.h \
+	include/const/mon/pstatus.h \
+	include/const/mon/species.h \
+	include/const/mon/stat.h \
+	include/const/mon/type.h \
 	include/const/ability.h \
 	include/const/batanim.h \
 	include/const/battle.h \
 	include/const/bmovefx.h \
 	include/const/maps.h \
+	include/const/mon.h \
 	include/const/moves.h \
 	include/const/species.h \
 	include/gba.h \
