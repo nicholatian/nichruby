@@ -1,0 +1,108 @@
+/* -*- coding: utf-8 -*- */
+/****************************************************************************\
+ *       __   _ _____ _______ _     _  ______ _     _ ______  __   __       *
+ *       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         *
+ *       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          *
+ *                                 nichruby                                 *
+ *                                                                          *
+ *                    Copyright © 2020 Alexander Nicholi                    *
+ *                       Released under BSD-2-Clause.                       *
+\****************************************************************************/
+
+#ifndef INC__CONST_MON_DATA_H
+#define INC__CONST_MON_DATA_H
+
+enum
+{
+	MON_DATA_PERSONALITY,
+	MON_DATA_OT_ID,
+	MON_DATA_NICKNAME,
+	MON_DATA_LANGUAGE,
+	MON_DATA_SANITY_BIT1,
+	MON_DATA_SANITY_BIT2,
+	MON_DATA_SANITY_BIT3,
+	MON_DATA_OT_NAME,
+	MON_DATA_MARKINGS,
+	MON_DATA_CHECKSUM,
+	MON_DATA_10,
+	MON_DATA_SPECIES,
+	MON_DATA_HELD_ITEM,
+	MON_DATA_MOVE1,
+	MON_DATA_MOVE2,
+	MON_DATA_MOVE3,
+	MON_DATA_MOVE4,
+	MON_DATA_PP1,
+	MON_DATA_PP2,
+	MON_DATA_PP3,
+	MON_DATA_PP4,
+	MON_DATA_PP_BONUSES,
+	MON_DATA_COOL,
+	MON_DATA_BEAUTY,
+	MON_DATA_CUTE,
+	MON_DATA_EXP,
+	MON_DATA_HP_EV,
+	MON_DATA_ATK_EV,
+	MON_DATA_DEF_EV,
+	MON_DATA_SPEED_EV,
+	MON_DATA_SPATK_EV,
+	MON_DATA_SPDEF_EV,
+	MON_DATA_FRIENDSHIP,
+	MON_DATA_SMART,
+	MON_DATA_POKERUS,
+	MON_DATA_MET_LOCATION,
+	MON_DATA_MET_LEVEL,
+	MON_DATA_MET_GAME,
+	MON_DATA_POKEBALL,
+	MON_DATA_HP_IV,
+	MON_DATA_ATK_IV,
+	MON_DATA_DEF_IV,
+	MON_DATA_SPEED_IV,
+	MON_DATA_SPATK_IV,
+	MON_DATA_SPDEF_IV,
+	MON_DATA_IS_EGG,
+	MON_DATA_ALT_ABILITY,
+	MON_DATA_TOUGH,
+	MON_DATA_SHEEN,
+	MON_DATA_OT_GENDER,
+	MON_DATA_COOL_RIBBON,
+	MON_DATA_BEAUTY_RIBBON,
+	MON_DATA_CUTE_RIBBON,
+	MON_DATA_SMART_RIBBON,
+	MON_DATA_TOUGH_RIBBON,
+	MON_DATA_STATUS,
+	MON_DATA_LEVEL,
+	MON_DATA_HP,
+	MON_DATA_MAX_HP,
+	MON_DATA_ATK,
+	MON_DATA_DEF,
+	MON_DATA_SPEED,
+	MON_DATA_SPATK,
+	MON_DATA_SPDEF,
+	MON_DATA_MAIL,
+	MON_DATA_SPECIES2,
+	MON_DATA_IVS,
+	MON_DATA_CHAMPION_RIBBON,
+	MON_DATA_WINNING_RIBBON,
+	MON_DATA_VICTORY_RIBBON,
+	MON_DATA_ARTIST_RIBBON,
+	MON_DATA_EFFORT_RIBBON,
+	MON_DATA_GIFT_RIBBON_1,
+	MON_DATA_GIFT_RIBBON_2,
+	MON_DATA_GIFT_RIBBON_3,
+	MON_DATA_GIFT_RIBBON_4,
+	MON_DATA_GIFT_RIBBON_5,
+	MON_DATA_GIFT_RIBBON_6,
+	MON_DATA_GIFT_RIBBON_7,
+	MON_DATA_FATEFUL_ENCOUNTER,
+	MON_DATA_KNOWN_MOVES,
+	MON_DATA_RIBBON_COUNT,
+	MON_DATA_RIBBONS,
+	MON_DATA_83,
+	MON_DATA_ATK2,
+	MON_DATA_DEF2,
+	MON_DATA_SPEED2,
+	MON_DATA_SPATK2,
+	MON_DATA_SPDEF2
+};
+
+#endif /* INC__CONST_MON_DATA_H */
