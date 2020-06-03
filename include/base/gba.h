@@ -9,18 +9,11 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATTLE_H
-#define INC__CONST_BATTLE_H
+/* DEFINITION MODULE */
 
-enum
-{
-	MAX_BATTLERS_COUNT = 4
-};
+#ifndef INC__BASE_GBA_H
+#define INC__BASE_GBA_H
 
-enum
-{
-	SECRET_BASE_OPPONENT = 1 << 10,
-	LINK_BATTLE_OPPONENT = 1 << 11
-};
+#define EWRAM_DATA __attribute__( ( section( "ewram_data" ) ) )
 
-#endif /* INC__CONST_BATTLE_H */
+#endif /* INC__BASE_GBA_H */

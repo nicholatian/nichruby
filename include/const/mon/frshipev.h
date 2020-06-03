@@ -9,6 +9,8 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
+/* DEFINITION MODULE */
+
 #ifndef INC__CONST_MON_FRSHIPEV_H
 #define INC__CONST_MON_FRSHIPEV_H
 

@@ -9,8 +9,10 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_MOVES_H
-#define INC__CONST_MOVES_H
+/* DEFINITION MODULE */
+
+#ifndef INC__CONST_MON_MOVES_H
+#define INC__CONST_MON_MOVES_H
 
 enum /* moves */
 {
@@ -372,4 +374,4 @@ enum /* moves */
 	MAX_MOVE
 };
 
-#endif /* INC__CONST_MOVES_H */
+#endif /* INC__CONST_MON_MOVES_H */

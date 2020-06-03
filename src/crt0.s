@@ -9,6 +9,8 @@
 @@                       Released under BSD-2-Clause.                       @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+@ DEFINITION MODULE
+
 .include "const/gba.s"
 .include "const/misc.s"
 .include "const/ver.s"

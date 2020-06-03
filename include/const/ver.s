@@ -9,6 +9,8 @@
 @@                       Released under BSD-2-Clause.                       @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+@ DEFINITION MODULE
+
 .ifdef SAPPHIRE
 .equ GAME_VERSION, 1
 .else

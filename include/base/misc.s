@@ -9,6 +9,8 @@
 @@                       Released under BSD-2-Clause.                       @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+@ DEFINITION MODULE
+
 .set TRUE, 1
 .set FALSE, 0
 

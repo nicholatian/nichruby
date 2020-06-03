@@ -9,7 +9,7 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#include "gba.h"
-#include "savedata.h"
+#include "base/gba.h"
+#include "save.h"
 
 void* get_savblk1ptr( void ) { return (void*)0x2025734; }

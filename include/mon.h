@@ -9,6 +9,8 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
+/* DEFINITION MODULE */
+
 #ifndef INC__MON_H
 #define INC__MON_H
 

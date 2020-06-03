@@ -9,6 +9,8 @@
 @@                       Released under BSD-2-Clause.                       @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+@ DEFINITION MODULE
+
 .set PSR_USR_MODE, 0x00000010
 .set PSR_FIQ_MODE, 0x00000011
 .set PSR_IRQ_MODE, 0x00000012

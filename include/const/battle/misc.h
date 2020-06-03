@@ -9,19 +9,20 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_MON_H
-#define INC__CONST_MON_H
+/* DEFINITION MODULE */
+
+#ifndef INC__CONST_BATTLE_MISC_H
+#define INC__CONST_BATTLE_MISC_H
 
 enum
 {
-	MON_MALE       = 0,
-	MON_FEMALE     = 254,
-	MON_GENDERLESS = 255,
-	MIN_LEVEL      = 1,
-	MAX_LEVEL      = 2,
-	MAX_TOTAL_EVS  = 510,
-	NUM_STATS      = 6,
-	UNOWN_FORM_CT  = 28
+	MAX_BATTLERS_COUNT = 4
 };
 
-#endif /* INC__CONST_MON_H */
+enum
+{
+	SECRET_BASE_OPPONENT = 1 << 10,
+	LINK_BATTLE_OPPONENT = 1 << 11
+};
+
+#endif /* INC__CONST_BATTLE_MISC_H */

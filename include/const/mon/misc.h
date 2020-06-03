@@ -9,9 +9,21 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__GBA_H
-#define INC__GBA_H
+/* DEFINITION MODULE */
 
-#define EWRAM_DATA __attribute__( ( section( "ewram_data" ) ) )
+#ifndef INC__CONST_MON_MISC_H
+#define INC__CONST_MON_MISC_H
 
-#endif /* INC__GBA_H */
+enum
+{
+	MON_MALE       = 0,
+	MON_FEMALE     = 254,
+	MON_GENDERLESS = 255,
+	MIN_LEVEL      = 1,
+	MAX_LEVEL      = 2,
+	MAX_TOTAL_EVS  = 510,
+	NUM_STATS      = 6,
+	UNOWN_FORM_CT  = 28
+};
+
+#endif /* INC__CONST_MON_MISC_H */

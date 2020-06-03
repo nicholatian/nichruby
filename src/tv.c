@@ -9,6 +9,8 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#include "savedata.h"
+/* STATE MODULE */
+
+#include "save.h"
 
 void clr_tvdata( void ) {}

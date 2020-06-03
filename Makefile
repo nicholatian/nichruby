@@ -42,11 +42,16 @@ CFILES := \
 	src/savedata.c \
 	src/tv.c
 HFILES := \
+	include/base/gba.h \
+	include/base/types.h \
 	include/const/battle/abilfx.h \
 	include/const/battle/aiaction.h \
+	include/const/battle/anim.h \
+	include/const/battle/effect.h \
 	include/const/battle/flag.h \
 	include/const/battle/fstat.h \
 	include/const/battle/hitmark.h \
+	include/const/battle/misc.h \
 	include/const/battle/movefx.h \
 	include/const/battle/movreslt.h \
 	include/const/battle/nvstat.h \
@@ -58,30 +63,24 @@ HFILES := \
 	include/const/battle/weather.h \
 	include/const/battle/which.h \
 	include/const/battle/xstat.h \
+	include/const/mon/ability.h \
 	include/const/mon/bodycol.h \
 	include/const/mon/data.h \
 	include/const/mon/egggroup.h \
 	include/const/mon/evo.h \
 	include/const/mon/frshipev.h \
 	include/const/mon/growth.h \
+	include/const/mon/misc.h \
+	include/const/mon/moves.h \
 	include/const/mon/nature.h \
 	include/const/mon/pstatus.h \
 	include/const/mon/species.h \
 	include/const/mon/stat.h \
 	include/const/mon/type.h \
-	include/const/ability.h \
-	include/const/batanim.h \
-	include/const/battle.h \
-	include/const/bmovefx.h \
 	include/const/maps.h \
-	include/const/mon.h \
-	include/const/moves.h \
-	include/const/species.h \
-	include/gba.h \
 	include/map.h \
 	include/mon.h \
-	include/savedata.h \
-	include/types.h
+	include/save.h
 IMGFILES :=
 PCMFILES :=
 OFILES := $(SFILES:.s=.s.o) $(CFILES:.c=.c.o) \

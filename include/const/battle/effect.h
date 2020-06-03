@@ -9,8 +9,10 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BMOVEFX_H
-#define INC__CONST_BMOVEFX_H
+/* DEFINITION MODULE */
+
+#ifndef INC__CONST_BATTLE_EFFECT_H
+#define INC__CONST_BATTLE_EFFECT_H
 
 enum /* effect */
 {
@@ -236,4 +238,4 @@ enum /* effect */
 	MAX_EFFECT
 };
 
-#endif /* INC__CONST_BMOVEFX_H */
+#endif /* INC__CONST_BATTLE_EFFECT_H */

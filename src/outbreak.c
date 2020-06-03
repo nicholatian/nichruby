@@ -9,15 +9,17 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
+/* LOGIC MODULE */
+
+#include "base/types.h"
 #include "const/maps.h"
-#include "const/moves.h"
-#include "const/species.h"
+#include "const/mon/moves.h"
+#include "const/mon/species.h"
 #include "map.h"
-#include "types.h"
 
 struct outbreak_mon
 {
-	pkmnid_t species;
+	monid_t species;
 	move_t move[4];
 	u8 level;
 	mapid_t loc;

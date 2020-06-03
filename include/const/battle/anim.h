@@ -9,8 +9,10 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC__CONST_BATANIM_H
-#define INC__CONST_BATANIM_H
+/* DEFINITION MODULE */
+
+#ifndef INC__CONST_BATTLE_ANIM_H
+#define INC__CONST_BATTLE_ANIM_H
 
 /* This header contains constants for battle animations. */
 
@@ -454,4 +456,4 @@ enum /* weather_anim */
 	ANIM_WEATHER_HAIL
 };
 
-#endif /* INC__CONST_BATANIM_H */
+#endif /* INC__CONST_BATTLE_ANIM_H */
