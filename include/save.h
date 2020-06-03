@@ -9,6 +9,8 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
+/* DEFINITION MODULE */
+
 #ifndef INC__SAVEDATA_H
 #define INC__SAVEDATA_H
 
@@ -24,7 +26,5 @@ struct savblk1
 	u16 map_layout, map_view[0x100];
 	u8 party_ct;
 };
-
-void* get_savblk1ptr( void );
 
 #endif /* INC__SAVEDATA_H */
