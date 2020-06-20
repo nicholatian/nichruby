@@ -1,0 +1,45 @@
+{
+	"configurations": [
+		{
+			"name": "Mac",
+			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
+				"/usr/local/include"
+			],
+			"cStandard": "c89",
+			"cppStandard": "c++11",
+			"macFrameworkPath": [
+				"/System/Library/Frameworks",
+				"/Library/Frameworks"
+			],
+			"compilerPath": "/usr/bin/clang"
+		},
+		{
+			"name": "Linux",
+			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
+				"/usr/include/glib-2.0",
+				"/usr/lib/glib-2.0/include",
+				"/usr/local/include"
+			],
+			"cStandard": "c89",
+			"cppStandard": "c++11",
+			"compilerPath": "/usr/bin/gcc"
+		},
+		{
+			"name": "Win32",
+			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
+				"/usr/include/glib-2.0",
+				"/usr/local/include"
+			],
+			"cStandard": "c89",
+			"cppStandard": "c++11",
+			"compilerPath": "/usr/local/bin/gcc-8"
+		}
+	],
+	"version": 4
+}
