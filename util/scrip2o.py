@@ -409,6 +409,10 @@ EXPR_IFNDEF = 20
 EXPR_ELIFNDEF = 21
 regexps_sz = len(regexps)
 
+def run(cmd):
+	from subprocess import check_output
+	return check_output(cmd).decode()
+
 def lex(indata):
 	ret = []
 	indata = indata.replace('\r\n', '\n').replace('\r', '\n')
@@ -607,13 +611,27 @@ def main(args):
 		indata = stdin.read()
 	else:
 		indata = open(args[1], 'r').read()
-	output = convert(indata)
-	if argc == 2:
-		# Use stdout
-		from sys import stdout
-		stdout.buffer.write(output)
-	else:
-		open(args[2], 'wb').write(output)
+	from uuid import uuid4
+	from tempfile import gettempdir
+	from os import path
+	name = args[1].split('data/')[-1].split('.', 1)[0].replace('/', '_')
+	outname = name + '_scrip'
+	id = uuid4().hex
+	tmpout = path.join(gettempdir(), id)
+	binout = convert(indata)
+	from sys import stdout
+	open(tmpout + '.scrip.bin', 'wb').write(binout)
+	import bin2asm
+	bin2asm.main(['bin2asm', tmpout + '.scrip.bin', tmpout + '.scrip.s', '-s',
+		outname])
+	outfname = '/dev/stdout'
+	if argc > 2:
+		outfname = args[2]
+	run(['arm-none-eabi-as', '-mcpu=arm7tdmi', '-o', outfname, tmpout +
+		'.scrip.s'])
+	from os import remove
+	remove(tmpout + '.scrip.bin')
+	remove(tmpout + '.scrip.s')
 	return 0
 
 if __name__ == '__main__':

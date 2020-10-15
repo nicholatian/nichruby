@@ -60,12 +60,21 @@ enum
 	TOK_COMMAND,
 	TOK_CMDARG,
 	TOK_DIREC,
-	TOK_DIRECARG
+	TOK_DIRECARG,
+	MAX_TOK
 };
 
 struct tok
 {
 	u8 type;
+	const char* start;
+	ptri sz;
+};
+
+struct tok_arr
+{
+	struct tok* val;
+	ptri sz;
 };
 
 struct cmdarg
@@ -408,59 +417,10 @@ static const struct cmd commands[256] = {
  * of commands are terminated by a blank line.
  */
 
-static GRegex** regexps;
-static GRegex* newline;
-
-void regexps_init( void )
+struct tok_arr lexer( const char* in )
 {
-	GError* e;
+	struct tok_arr ret;
 
-	regexps = g_malloc( sizeof( GRegex* ) * MAX_EXPR );
-	regexps[EXPR_COMMENT] = g_regex_new( "/\\*.*\\*/", G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_EMPTY] = g_regex_new( "^\\s*$", G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_IFDEF] = g_regex_new(
-		"^\\s*#(el)?if(n)?def\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_IF] = g_regex_new(
-		"^\\s*#(el)?if\\s+([A-Za-z0-9_,]+)\\s+(==|!=|<=?|>=?)\\s+([A-Za-z0-9_,]+)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_ELSE] = g_regex_new( "^\\s*#else\\s*$", G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_ENDIF] = g_regex_new( "^\\s*#endif\\s*$", G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_EXPORT] = g_regex_new(
-		"^\\s*#export\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_IMPORT] = g_regex_new(
-		"^\\s*#import\\s+\"([A-Za-z0-9_\\-/]+\\.[A-Za-z0-9_\\-]+)\"\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_DEFINE] = g_regex_new(
-		"^\\s*#define\\s+([A-Za-z_][A-Za-z0-9_]*)\\s+([A-Za-z0-9_,]+)",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_UNDEF] = g_regex_new(
-		"^\\s*#undef\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_INFO] = g_regex_new(
-		"^\\s*#info\\s+\"(([^\"]|\\\\[\"\\\\])+)\"\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_WARN] = g_regex_new(
-		"^\\s*#warn\\s+\"(([^\"]|\\\\[\"\\\\])+)\"\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_FATAL] = g_regex_new(
-		"^\\s*#fatal\\s+\"(([^\"]|\\\\[\"\\\\])+)\"\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_BYTE] = g_regex_new(
-		"^\\s*#byte\\s+([A-Za-z0-9_,\\s]+)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_HWORD] = g_regex_new(
-		"^\\s*#hword\\s+([A-Za-z0-9_,\\s]+)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_WORD] = g_regex_new(
-		"^\\s*#word\\s+([A-Za-z0-9_,\\s]+)\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_COMMAND] = g_regex_new(
-		"^\\s*([A-Za-z_][A-Za-z0-9_]*)(\\s+[A-Za-z0-9_,:\\s]+)?\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	regexps[EXPR_LABEL] = g_regex_new(
-		"^\\s*([A-Za-z_][A-Za-z0-9_]*):\\s*$",
-		G_REGEX_OPTIMIZE, 0, &e );
-	newline = g_regex_new( "[\r\n]+", G_REGEX_OPTIMIZE, 0, &e );
+	ret.val = g_malloc( sizeof( struct tok ) * 16 );
+	ret.sz = 16;
 }
