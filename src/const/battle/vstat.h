@@ -26,7 +26,7 @@ enum /* vstat */
 	VSTAT_WRAPPED       = ( 1 << 13 ) | ( 1 << 14 ) | ( 1 << 15 ),
 	/* NOTE: 4 bits, one for each battler */
 	VSTAT_INFATUATION =
-	   ( 1 << 16 ) | ( 1 << 17 ) | ( 1 << 18 ) | ( 1 << 19 ),
+		( 1 << 16 ) | ( 1 << 17 ) | ( 1 << 18 ) | ( 1 << 19 ),
 	VSTAT_PUMPED      = 1 << 20,
 	VSTAT_TRANSFORMED = 1 << 21,
 	VSTAT_RECHARGE    = 1 << 22,

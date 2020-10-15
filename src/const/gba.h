@@ -30,18 +30,18 @@ enum
 enum
 {
 	PSR_MODE_MASK = 0x1F,
-	PSR_T_BIT = 0x20,
-	PSR_F_BIT = 0x40,
-	PSR_I_BIT = 0x80
+	PSR_T_BIT     = 0x20,
+	PSR_F_BIT     = 0x40,
+	PSR_I_BIT     = 0x80
 };
 
 enum
 {
 	EWRAM_SZ = 0x40000,
 	IWRAM_SZ = 0x8000,
-	PAL_SZ = 0x400,
-	VRAM_SZ = 0x18000,
-	SRAM_SZ = 0x10000
+	PAL_SZ   = 0x400,
+	VRAM_SZ  = 0x18000,
+	SRAM_SZ  = 0x10000
 };
 
 enum
@@ -61,7 +61,7 @@ enum
 	PAL = 0x5000000,
 	/* Video RAM */
 	VRAM = 0x6000000,
-	/* ìObject Attribute Memoryî */
+	/* ‚ÄúObject Attribute Memory‚Äù */
 	OAM = 0x7000000,
 	/* Read only memory (Game pak) */
 	ROM = 0x8000000,
@@ -73,7 +73,7 @@ enum
 {
 	/* Display control */
 	DISPCNT = IO + 0x0,
-	/* ìGreen swapî (undocumented, unused) */
+	/* ‚ÄúGreen swap‚Äù (undocumented, unused) */
 	GREENSWAP = IO + 0x2,
 	/* Display stat (?) */
 	DISPSTAT = IO + 0x4,

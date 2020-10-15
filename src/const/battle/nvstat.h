@@ -9,22 +9,25 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-/* DEFINITION MODULE */
+#ifndef INC__CONST_BATTLE_NVSTAT_H
+#define INC__CONST_BATTLE_NVSTAT_H
 
-#ifndef INC__SAVEDATA_H
-#define INC__SAVEDATA_H
+/* Non-volatile status conditions (NVSTAT)
+ * These persist outside of battle and after switching out */
 
-#include "map.h"
-#include "types.h"
-
-struct savblk1
+enum /* nvstat */
 {
-	struct s16v2 pos;
-	struct warp loc, warp1, warp2, last_heal, warp4;
-	song_t music;
-	u8 weather, weather_stage, flash_lvl;
-	u16 map_layout, map_view[0x100];
-	u8 party_ct;
+	NVSTAT_NONE,
+	NVSTAT_SLP         = 0x7,
+	NVSTAT_PSN         = 0x8,
+	NVSTAT_BRN         = 0x10,
+	NVSTAT_FRZ         = 0x20,
+	NVSTAT_PAR         = 0x40,
+	NVSTAT_TOX         = 0x80,
+	NVSTAT_TOX_COUNTER = 0xF00,
+	NVSTAT_ANY_PSN     = NVSTAT_PSN | NVSTAT_TOX,
+	NVSTAT_ANY = NVSTAT_SLP | NVSTAT_PSN | NVSTAT_BRN | NVSTAT_FRZ |
+		NVSTAT_PAR | NVSTAT_TOX
 };
 
-#endif /* INC__SAVEDATA_H */
+#endif /* INC__CONST_BATTLE_NVSTAT_H */

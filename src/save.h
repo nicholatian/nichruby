@@ -11,21 +11,21 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__CONST_MON_BODYCOL_H
-#define INC__CONST_MON_BODYCOL_H
+#ifndef INC__SAVEDATA_H
+#define INC__SAVEDATA_H
 
-enum {
-	BODYCOL_RED,
-	BODYCOL_BLUE,
-	BODYCOL_YELLOW,
-	BODYCOL_GREEN,
-	BODYCOL_BLACK,
-	BODYCOL_BROWN,
-	BODYCOL_PURPLE,
-	BODYCOL_GRAY,
-	BODYCOL_WHITE,
-	BODYCOL_PINK,
-	MAX_BODYCOL
+#include "map.h"
+#include "suptypes.h"
+#include <uni/types/vec.h>
+
+struct savblk1
+{
+	s16v2 pos;
+	struct warp loc, warp1, warp2, last_heal, warp4;
+	song_t music;
+	u8 weather, weather_stage, flash_lvl;
+	u16 map_layout, map_view[0x100];
+	u8 party_ct;
 };
 
-#endif /* INC__CONST_MON_BODYCOL_H */
+#endif /* INC__SAVEDATA_H */

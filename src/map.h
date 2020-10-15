@@ -11,17 +11,19 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__CONST_MON_GROWTH_H
-#define INC__CONST_MON_GROWTH_H
+#ifndef INC__MAP_H
+#define INC__MAP_H
 
-enum {
-	GROWTH_MEDFAST,
-	GROWTH_ERRATIC,
-	GROWTH_FLUC,
-	GROWTH_MEDSLOW,
-	GROWTH_FAST,
-	GROWTH_SLOW,
-	MAX_GROWTH
+#include "suptypes.h"
+#include <uni/types/vec.h>
+
+typedef u16 mapid_t;
+
+struct warp
+{
+	mapid_t map;
+	u8 warp;
+	s16v2 pos;
 };
 
-#endif /* INC__CONST_MON_GROWTH_H */
+#endif /* INC__MAP_H */

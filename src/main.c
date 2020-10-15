@@ -9,22 +9,28 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
+/* STATE MODULE */
+
 #include "intr.h"
 
-static void intr_vblank(void);
-static void intr_hblank(void);
-static void intr_vcount(void);
-static void intr_serial(void);
-static void intr_timer3(void);
-static void intr_dummy(void);
+#include <uni/types/int.h>
+
+#if 0
+static void intr_vblank( void );
+static void intr_hblank( void );
+static void intr_vcount( void );
+static void intr_serial( void );
+static void intr_timer3( void );
+static void intr_dummy( void );
+#endif
 
 enum
 {
 	TBL_INTR_TMPL_SZ = 14
 };
 
-static const PFN_intr_func tbl_intr_tmpl[TBL_INTR_TMPL_SZ] = {
-	intr_serial,
+#if 0
+static const PFN_intr_func tbl_intr_tmpl[TBL_INTR_TMPL_SZ] = { intr_serial,
 	intr_timer3,
 	intr_hblank,
 	intr_vblank,
@@ -37,5 +43,9 @@ static const PFN_intr_func tbl_intr_tmpl[TBL_INTR_TMPL_SZ] = {
 	intr_dummy,
 	intr_dummy,
 	intr_dummy,
-	intr_dummy
-};
+	intr_dummy };
+#endif
+
+u32 intr_table = 0;
+
+int main( void ) { return 0; }

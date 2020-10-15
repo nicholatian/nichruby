@@ -14,7 +14,7 @@
 #ifndef INC__MON_H
 #define INC__MON_H
 
-#include "types.h"
+#include "suptypes.h"
 
 enum
 {

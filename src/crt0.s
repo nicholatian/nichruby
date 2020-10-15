@@ -30,7 +30,7 @@
 .text
 .arm
 
-start:
+_start:
 	b init
 
 	@ the following is set by gbafix
@@ -99,25 +99,8 @@ gpio_portreadable:
 	.4byte 0xFFFFFFFF
 	.4byte 0xFFFFFFFF
 	.4byte 0xFFFFFFFF
-	.4byte GAME_VERSION
-	.4byte GAME_LANGUAGE
-	.ifdef SAPPHIRE
-	.ascii "pokemon sapphire version"
-	.space 8
-	.else
+	.ascii "AXVE"
 	.ascii "pokemon ruby version"
-	.space 12
-	.endif
-	.4byte gMonFrontPicTable
-	.4byte gMonBackPicTable
-	.4byte gMonPaletteTable
-	.4byte gMonShinyPaletteTable
-	.4byte gMonIconTable
-	.4byte gMonIconPaletteIndices
-	.4byte gMonIconPaletteTable
-	.4byte gSpeciesNames
-	.4byte gMoveNames
-	.4byte gDecorations
 	.4byte     0x1220
 	.4byte     0x1340
 	.4byte       0x18
@@ -179,7 +162,7 @@ init:
 	ldr r1, =main
 	mov lr, pc
 	bx r1
-	b Init
+	b init
 
 	.balign 4, 0
 sp_sys: .word IWRAM_END - 0x1a0
