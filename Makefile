@@ -24,7 +24,7 @@ AFILE   :=
 
 # space-separated path list for #includes
 # <system> includes
-INCLUDES := /usr/agb-armv4t-eabi/include
+INCLUDES := $(TROOT)/include
 # "local" includes
 INCLUDEL := src
 
@@ -96,6 +96,8 @@ TES_CFILES    :=
 TES_CPPFILES  :=
 TES_PUBHFILES :=
 TES_PRVHFILES :=
+
+LDFLAGS := -specs=gba.specs
 
 # this defines all our usual targets
 include $(AQ)/lib/slick/targets.mk
