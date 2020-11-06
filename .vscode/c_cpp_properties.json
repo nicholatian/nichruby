@@ -4,18 +4,17 @@
 			"name": "Mac",
 			"includePath": [
 				"${workspaceFolder}/src",
-				"/usr/agb-armv4t-eabi/include"
+				"/usr/local/armv4t-agb-eabi/include"
 			],
 			"cStandard": "c89",
 			"cppStandard": "c++11",
 			"macFrameworkPath": [],
 			"compilerPath": "/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc"
-		},
-		{
+		}, {
 			"name": "Linux",
 			"includePath": [
 				"${workspaceFolder}/src",
-				"/usr/agb-armv4t-eabi/include"
+				"/usr/armv4t-agb-eabi/include"
 			],
 			"cStandard": "c89",
 			"cppStandard": "c++11",
