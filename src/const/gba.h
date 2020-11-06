@@ -148,7 +148,7 @@ enum
 	/* Window outside control */
 	WINOUT = IO + 0x4A,
 	/* Mosaic control register */
-	MOSAIC = IO + 0x4C,
+	MOSAIC = IO + 0x4C
 };
 
 #endif /* INC__BASE_GBA_H */
