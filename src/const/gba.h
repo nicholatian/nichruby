@@ -14,7 +14,8 @@
 #ifndef INC__BASE_GBA_H
 #define INC__BASE_GBA_H
 
-#define EWRAM_DATA __attribute__( ( section( "ewram_data" ) ) )
+#define D_IWRAM __attribute__( ( section( "iwram" ) ) )
+#define D_EWRAM __attribute__( ( section( "ewram" ) ) )
 
 enum
 {
@@ -149,6 +150,37 @@ enum
 	WINOUT = IO + 0x4A,
 	/* Mosaic control register */
 	MOSAIC = IO + 0x4C
+};
+
+/* input keys */
+enum
+{
+	KEY_A = 0,
+	KEY_B,
+	KEY_START,
+	KEY_SEL,
+	KEY_UP,
+	KEY_DOWN,
+	KEY_LEFT,
+	KEY_RIGHT,
+	KEY_L,
+	KEY_R,
+	MAX_KEY
+};
+
+/* bitmasks for keys */
+enum
+{
+	KEYMASK_A = 1 << KEY_A,
+	KEYMASK_B = 1 << KEY_B,
+	KEYMASK_START = 1 << KEY_START,
+	KEYMASK_SEL = 1 << KEY_SEL,
+	KEYMASK_UP = 1 << KEY_UP,
+	KEYMASK_DOWN = 1 << KEY_DOWN,
+	KEYMASK_LEFT = 1 << KEY_LEFT,
+	KEYMASK_RIGHT = 1 << KEY_RIGHT,
+	KEYMASK_L = 1 << KEY_L,
+	KEYMASK_R = 1 << KEY_R
 };
 
 #endif /* INC__BASE_GBA_H */

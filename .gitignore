@@ -24,6 +24,9 @@
 *.agb
 *.elf
 *.bin
+*.sav*
+*.sg*
+*.ss*
 
 
 

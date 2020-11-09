@@ -9,52 +9,13 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-/* STATE MODULE */
+#ifndef INC__CONST_TYPES_H
+#define INC__CONST_TYPES_H
 
-#include "intr.h"
-
-#include "const/gba.h"
-#include "const/types.h"
 #include <uni/types/int.h>
 
-extern const col_t egerror_jasc;
+typedef u16 col_t;
+typedef u16 monid_t;
+typedef u16 moveid_t;
 
-const PFN_intr_func intr_table[] = {
-	intr_vcount,
-	intr_serial,
-	intr_timer3,
-	intr_hblank,
-	intr_vblank,
-	intr_timer0,
-	intr_timer1,
-	intr_timer2,
-	intr_dma0,
-	intr_dma1,
-	intr_dma2,
-	intr_dma3,
-	intr_key,
-	intr_gamepak
-};
-
-int main( void )
-{
-	ptri i;
-	const u16 v = 15 | (15 << 8);
-
-	intr_state_init( );
-
-	for(i = 0; i < 0x9B00; ++i)
-	{
-		*(volatile u16*)(VRAM + (i << 1)) = v;
-	}
-
-	for(i = 0; i < 0x10; ++i)
-	{
-		const col_t* col = (&egerror_jasc)[i];
-		*(volatile u16*)(PAL + (i << 1)) = col;
-	}
-
-	*(volatile u16*)DISPCNT = 4 | (1 << 10);
-
-	return 0;
-}
+#endif /* INC__CONST_TYPES_H */

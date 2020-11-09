@@ -17,7 +17,7 @@
 
 .syntax unified
 
-.globl start
+.globl _start
 .globl rh_nintenpic
 .globl gpio_portdata
 .globl gpio_portdir
@@ -27,7 +27,7 @@
 .globl main
 .globl intr_table
 
-.text
+.section .init
 .arm
 
 _start:
@@ -84,71 +84,23 @@ gpio_portreadable:
 
 	@ we are now at ROM:080000D0
 
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.4byte 0xFFFFFFFF
+	.ascii "CXVE"
 
-@ TODO: figure out what this data is
+.arm
+.balign 4, 0
 
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.4byte 0xFFFFFFFF
-	.ascii "AXVE"
-	.ascii "pokemon ruby version"
-	.4byte     0x1220
-	.4byte     0x1340
-	.4byte       0x18
-	.4byte      0x938
-	.4byte     0x3A8C
-	.4byte       0x46
-	.4byte      0x836
-	.4byte      0x84C
-	.4byte      0x182
-	.4byte  0xA0A0A07
-	.4byte  0xC060C0C
-	.4byte  0xC121006
-	.4byte  0x8010B0F
-	.4byte        0xC
-	.4byte      0x890
-	.4byte     0x3AC0
-	.4byte      0x234
-	.4byte      0x238
-	.4byte          9
-	.4byte        0xA
-	.4byte          0
-	.4byte          8
-	.4byte      0x556
-	.4byte      0x557
-	.4byte     0x312F
-	.4byte     0x311B
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte          0
-	.4byte 0xFFFFFFFF
-
-	.arm
-	.balign 4, 0
 init:
 	mov r0, PSR_IRQ_MODE
 	msr cpsr_cf, r0
@@ -164,12 +116,12 @@ init:
 	bx r1
 	b init
 
-	.balign 4, 0
+.balign 4, 0
 sp_sys: .word IWRAM_END - 0x1a0
 sp_irq: .word IWRAM_END - 0x60
 
-	.arm
-	.balign 4, 0
+.arm
+.balign 4, 0
 intr_main:
 	mov r3, REG_BASE
 	add r3, r3, 0x200
@@ -252,6 +204,6 @@ intr_main:
 	msr spsr_cf, r0
 	bx lr
 
-	.pool
+.pool
 
-	.balign 4, 0 @ don’t pad with nop.
+.balign 4, 0 @ don’t pad with nop.

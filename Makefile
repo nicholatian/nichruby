@@ -24,12 +24,12 @@ AFILE   :=
 
 # space-separated path list for #includes
 # <system> includes
-INCLUDES := $(TROOT)/include
+INCLUDES :=
 # "local" includes
 INCLUDEL := src
 
 # space-separated library name list
-LIBS    :=
+LIBS    := uni_himem uni_err
 LIBDIRS :=
 
 # ‘3P’ are in-tree 3rd-party dependencies
@@ -45,6 +45,7 @@ FWORKS :=
 SFILES    := \
 	src/crt0.s
 CFILES    := \
+	src/intr.c \
 	src/main.c \
 	src/outbreak.c \
 	src/savedata.c \
@@ -87,9 +88,11 @@ PRVHFILES := \
 	src/const/mon/stat.h \
 	src/const/mon/type.h \
 	src/const/maps.h \
+	src/const/types.h \
 	src/map.h \
 	src/mon.h \
 	src/save.h
+PALFILES := data/error.jasc
 
 # test suite sources
 TES_CFILES    :=
@@ -97,7 +100,7 @@ TES_CPPFILES  :=
 TES_PUBHFILES :=
 TES_PRVHFILES :=
 
-LDFLAGS := -specs=gba.specs
+LDFLAGS := -T src/gba.ld -nostdlib
 
 # this defines all our usual targets
 include $(AQ)/lib/slick/targets.mk
