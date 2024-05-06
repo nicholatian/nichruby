@@ -1,13 +1,12 @@
-/* -*- coding: utf-8 -*- */
-/****************************************************************************\
- *       __   _ _____ _______ _     _  ______ _     _ ______  __   __       *
- *       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         *
- *       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          *
- *                                 nichruby                                 *
- *                                                                          *
- *                    Copyright © 2020 Alexander Nicholi                    *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*********************************************************************\
+ *    __   _ _____ _______ _     _  ______ _     _ ______ __   __    *
+ *    | \  |   |   |       |_____| |_____/ |     | |_____]  \_/      *
+ *    |  \_| __|__ |_____  |     | |    \_ |_____| |_____]   |       *
+ *                             nich ruby                             *
+ *                                                                   *
+ *             Copyright (C) 2020-2024 Alexander Nicholi             *
+ *                    Released under BSD-2-Clause                    *
+\*********************************************************************/
 
 /* DEFINITION MODULE */
 
@@ -171,16 +170,16 @@ enum
 /* bitmasks for keys */
 enum
 {
-	KEYMASK_A = 1 << KEY_A,
-	KEYMASK_B = 1 << KEY_B,
+	KEYMASK_A     = 1 << KEY_A,
+	KEYMASK_B     = 1 << KEY_B,
 	KEYMASK_START = 1 << KEY_START,
-	KEYMASK_SEL = 1 << KEY_SEL,
-	KEYMASK_UP = 1 << KEY_UP,
-	KEYMASK_DOWN = 1 << KEY_DOWN,
-	KEYMASK_LEFT = 1 << KEY_LEFT,
+	KEYMASK_SEL   = 1 << KEY_SEL,
+	KEYMASK_UP    = 1 << KEY_UP,
+	KEYMASK_DOWN  = 1 << KEY_DOWN,
+	KEYMASK_LEFT  = 1 << KEY_LEFT,
 	KEYMASK_RIGHT = 1 << KEY_RIGHT,
-	KEYMASK_L = 1 << KEY_L,
-	KEYMASK_R = 1 << KEY_R
+	KEYMASK_L     = 1 << KEY_L,
+	KEYMASK_R     = 1 << KEY_R
 };
 
 #endif /* INC__BASE_GBA_H */

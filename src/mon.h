@@ -1,13 +1,12 @@
-/* -*- coding: utf-8 -*- */
-/****************************************************************************\
- *       __   _ _____ _______ _     _  ______ _     _ ______  __   __       *
- *       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         *
- *       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          *
- *                                 nichruby                                 *
- *                                                                          *
- *                    Copyright © 2020 Alexander Nicholi                    *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*********************************************************************\
+ *    __   _ _____ _______ _     _  ______ _     _ ______ __   __    *
+ *    | \  |   |   |       |_____| |_____/ |     | |_____]  \_/      *
+ *    |  \_| __|__ |_____  |     | |    \_ |_____| |_____]   |       *
+ *                             nich ruby                             *
+ *                                                                   *
+ *             Copyright (C) 2020-2024 Alexander Nicholi             *
+ *                    Released under BSD-2-Clause                    *
+\*********************************************************************/
 
 /* DEFINITION MODULE */
 
@@ -79,7 +78,9 @@ struct mon_substruc_d
 	u32 gift6_rbn : 1;
 	u32 gift7_rbn : 1;
 	/* Unused in Ruby and Sapphire.
-	 * NOTE: MSB must be set for Mew & Deoxys to obey in FR/LG/Emerald */
+	 * NOTE: MSB must be set for Mew & Deoxys to obey in
+	 * FR/LG/Emerald
+	 */
 	u32 fateful : 5;
 };
 

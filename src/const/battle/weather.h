@@ -1,13 +1,12 @@
-/* -*- coding: utf-8 -*- */
-/****************************************************************************\
- *       __   _ _____ _______ _     _  ______ _     _ ______  __   __       *
- *       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         *
- *       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          *
- *                                 nichruby                                 *
- *                                                                          *
- *                    Copyright © 2020 Alexander Nicholi                    *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*********************************************************************\
+ *    __   _ _____ _______ _     _  ______ _     _ ______ __   __    *
+ *    | \  |   |   |       |_____| |_____/ |     | |_____]  \_/      *
+ *    |  \_| __|__ |_____  |     | |    \_ |_____| |_____]   |       *
+ *                             nich ruby                             *
+ *                                                                   *
+ *             Copyright (C) 2020-2024 Alexander Nicholi             *
+ *                    Released under BSD-2-Clause                    *
+\*********************************************************************/
 
 #ifndef INC__CONST_BATTLE_WEATHER_H
 #define INC__CONST_BATTLE_WEATHER_H
@@ -18,8 +17,8 @@ enum /* weather */
 	/* NOTE: downpour is unused */
 	WEATHER_RAIN_POUR = 1 << 1,
 	WEATHER_RAIN_PERM = 1 << 2,
-	WEATHER_RAIN_ANY =
-		WEATHER_RAIN_TEMP | WEATHER_RAIN_POUR | WEATHER_RAIN_PERM,
+	WEATHER_RAIN_ANY  = WEATHER_RAIN_TEMP | WEATHER_RAIN_POUR |
+		WEATHER_RAIN_PERM,
 	WEATHER_SANDSTORM_TEMP = 1 << 3,
 	WEATHER_SANDSTORM_PERM = 1 << 4,
 	WEATHER_SANDSTORM_ANY =

@@ -36,7 +36,7 @@ BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false
 BreakAfterJavaFieldAnnotations: false
 BreakStringLiterals: false
-ColumnLimit: 79
+ColumnLimit: 72
 CommentPragmas: '^ IWYU pragma:'
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 8
@@ -72,12 +72,12 @@ ObjCBlockIndentWidth: 8
 ObjCSpaceAfterProperty: false
 ObjCSpaceBeforeProtocolList: true
 PenaltyBreakBeforeFirstCallParameter: 19
-PenaltyBreakComment: 79
-PenaltyBreakFirstLessLess: 79
+PenaltyBreakComment: 72
+PenaltyBreakFirstLessLess: 72
 PenaltyBreakString: 1000
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
-PointerAlignment: Left
+PointerAlignment: Middle
 ReflowComments: true
 SortIncludes: false
 SpaceAfterCStyleCast: false

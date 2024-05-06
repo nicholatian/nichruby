@@ -1,13 +1,12 @@
-/* -*- coding: utf-8 -*- */
-/****************************************************************************\
- *       __   _ _____ _______ _     _  ______ _     _ ______  __   __       *
- *       | \  |   |   |       |_____| |_____/ |     | |_____]   \_/         *
- *       |  \_| __|__ |_____  |     | |    \_ |_____| |_____]    |          *
- *                                 nichruby                                 *
- *                                                                          *
- *                    Copyright © 2020 Alexander Nicholi                    *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*********************************************************************\
+ *    __   _ _____ _______ _     _  ______ _     _ ______ __   __    *
+ *    | \  |   |   |       |_____| |_____/ |     | |_____]  \_/      *
+ *    |  \_| __|__ |_____  |     | |    \_ |_____| |_____]   |       *
+ *                             nich ruby                             *
+ *                                                                   *
+ *             Copyright (C) 2020-2024 Alexander Nicholi             *
+ *                    Released under BSD-2-Clause                    *
+\*********************************************************************/
 
 /* LOGIC MODULE */
 
@@ -32,19 +31,31 @@ enum
 
 static const struct outbreak_mon outbreaks[OUTBREAK_CT] = {
 	{ SPECIES_SURSKIT,
-		{ MOVE_BUBBLE, MOVE_QUICK_ATTACK, MOVE_NONE, MOVE_NONE },
+		{ MOVE_BUBBLE,
+			MOVE_QUICK_ATTACK,
+			MOVE_NONE,
+			MOVE_NONE },
 		3,
 		MAP_ROUTE102 },
 	{ SPECIES_SURSKIT,
-		{ MOVE_BUBBLE, MOVE_QUICK_ATTACK, MOVE_NONE, MOVE_NONE },
+		{ MOVE_BUBBLE,
+			MOVE_QUICK_ATTACK,
+			MOVE_NONE,
+			MOVE_NONE },
 		15,
 		MAP_ROUTE114 },
 	{ SPECIES_SURSKIT,
-		{ MOVE_BUBBLE, MOVE_QUICK_ATTACK, MOVE_NONE, MOVE_NONE },
+		{ MOVE_BUBBLE,
+			MOVE_QUICK_ATTACK,
+			MOVE_NONE,
+			MOVE_NONE },
 		15,
 		MAP_ROUTE117 },
 	{ SPECIES_SURSKIT,
-		{ MOVE_BUBBLE, MOVE_QUICK_ATTACK, MOVE_NONE, MOVE_NONE },
+		{ MOVE_BUBBLE,
+			MOVE_QUICK_ATTACK,
+			MOVE_NONE,
+			MOVE_NONE },
 		28,
 		MAP_ROUTE120 },
 	{ SPECIES_SKITTY,
