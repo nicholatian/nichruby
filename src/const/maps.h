@@ -10,8 +10,8 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__CONST_MAPS_H
-#define INC__CONST_MAPS_H
+#ifndef INC__NICHRUBY_CONST_MAPS_H
+#define INC__NICHRUBY_CONST_MAPS_H
 
 enum /* map */
 {
@@ -410,4 +410,4 @@ enum /* map */
 	MAX_MAP
 };
 
-#endif /* INC__CONST_MAPS_H */
+#endif /* INC__NICHRUBY_CONST_MAPS_H */

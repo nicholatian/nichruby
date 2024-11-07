@@ -10,12 +10,11 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__INTR_H
-#define INC__INTR_H
-
-#include <uni/types/int.h>
+#ifndef INC__NICHRUBY_INTR_H
+#define INC__NICHRUBY_INTR_H
 
 #include "const/gba.h"
+#include "const/types/int.h"
 
 struct intr_state;
 
@@ -58,4 +57,4 @@ void intr_dma3( void );
 void intr_key( void );
 void intr_gamepak( void );
 
-#endif /* INC__INTR_H */
+#endif /* INC__NICHRUBY_INTR_H */

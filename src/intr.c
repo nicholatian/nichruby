@@ -12,16 +12,16 @@
 
 #include "intr.h"
 
-#include <uni/memory.h>
-#include <uni/types/int.h>
+#include "memset.h"
+#include "const/types/int.h"
 
 #include "const/gba.h"
 
-D_IWRAM struct intr_state intr_state;
+SBSS struct intr_state intr_state;
 
 void intr_state_init( void )
 {
-	uni_memset( &intr_state, 0, sizeof( struct intr_state ) );
+	memset( &intr_state, 0, sizeof( struct intr_state ) );
 }
 
 void intr_hblank( void )

@@ -586,8 +586,8 @@ def parse(tokens):
 					kind = '#hword'
 				elif typ == EXPR_WORD:
 					kind = '#word'
-				else
-				blocks[cur_block].append((kind, dat[1]))
+				else:
+					blocks[cur_block].append((kind, dat[1]))
 			elif typ == EXPR_BYTE:
 				pass
 			# TODO: properly parse commands and raws

@@ -10,11 +10,11 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__MAP_H
-#define INC__MAP_H
+#ifndef INC__NICHRUBY_MAP_H
+#define INC__NICHRUBY_MAP_H
 
 #include "suptypes.h"
-#include <uni/types/vec.h>
+#include "const/types/vec.h"
 
 typedef u16 mapid_t;
 
@@ -25,4 +25,4 @@ struct warp
 	s16v2 pos;
 };
 
-#endif /* INC__MAP_H */
+#endif /* INC__NICHRUBY_MAP_H */

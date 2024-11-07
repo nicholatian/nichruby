@@ -10,8 +10,8 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__CONST_ITEMS_H
-#define INC__CONST_ITEMS_H
+#ifndef INC__NICHRUBY_CONST_ITEMS_H
+#define INC__NICHRUBY_CONST_ITEMS_H
 
 enum /* item */
 {
@@ -333,4 +333,4 @@ enum
 	ITEM_TM_SZ = 50
 };
 
-#endif /* INC__CONST_ITEMS_H */
+#endif /* INC__NICHRUBY_CONST_ITEMS_H */

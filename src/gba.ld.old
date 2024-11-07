@@ -1,0 +1,121 @@
+/*********************************************************************\
+ *    __   _ _____ _______ _     _  ______ _     _ ______ __   __    *
+ *    | \  |   |   |       |_____| |_____/ |     | |_____]  \_/      *
+ *    |  \_| __|__ |_____  |     | |    \_ |_____| |_____]   |       *
+ *                             nich ruby                             *
+ *                                                                   *
+ *             Copyright (C) 2020-2024 Alexander Nicholi             *
+ *                    Released under BSD-2-Clause                    *
+\*********************************************************************/
+
+MEMORY
+{
+	ewram  (rwx) : ORIGIN = 0x2000000, LENGTH = 256k
+	iwram  (rwx) : ORIGIN = 0x3000000, LENGTH = 32k
+	io     ( w ) : ORIGIN = 0x4000000, LENGTH = 1k - 1
+	pal    ( w ) : ORIGIN = 0x5000000, LENGTH = 1k
+	vram   ( w ) : ORIGIN = 0x6000000, LENGTH = 96k
+	oam    ( w ) : ORIGIN = 0x7000000, LENGTH = 1k
+	rom    (r x) : ORIGIN = 0x8000000, LENGTH = 32M
+}
+
+ENTRY( _start );
+
+__iwram_start = ORIGIN( iwram );
+__ewram_start = ORIGIN( ewram );
+__io_start    = ORIGIN( io );
+__pal_start   = ORIGIN( pal );
+__vram_start  = ORIGIN( vram );
+__oam_start   = ORIGIN( oam );
+__rom_start   = ORIGIN( rom );
+__iwram_end   = __iwram_start + LENGTH( iwram );
+__ewram_end   = __ewram_start + LENGTH( ewram );
+__io_end      = __io_start + LENGTH( io );
+__pal_end     = __pal_start + LENGTH( pal );
+__vram_end    = __vram_start + LENGTH( vram );
+__oam_end     = __oam_start + LENGTH( oam );
+/* note no __rom_end (yet) */
+
+SECTIONS
+{
+	. = __rom_start;
+
+	.init :
+	{
+		KEEP(*(SORT_NONE(.init)))
+		. = ALIGN(4);
+	} >rom =0xFF
+
+	__text_start = .;
+
+	.text :
+	{
+		*(EXCLUDE_FILE(*.iwram*) .text*)
+		. = ALIGN(4);
+	} >rom =0xFF
+
+	__text_end = .;
+	__rodata_start = .;
+
+	.rodata :
+	{
+		*(.rodata)
+		. = ALIGN(4);
+	} >rom =0xFF
+
+	__rodata_end = .;
+	__rom_end = __rodata_end;
+	_end = __rodata_end;
+
+	__iwram_lma = .;
+
+	.iwram __iwram_start : AT(__iwram_start)
+	{
+		__iwram_start__ = ABSOLUTE(.);
+		*(.iwram)
+		*iwram.*(.text*)
+		. = ALIGN(4);
+		__iwram_end__ = ABSOLUTE(.);
+	} >iwram
+
+	__data_lma = __iwram_lma + SIZEOF(.iwram);
+
+	.data ALIGN(4) : AT(__data_lma)
+	{
+		__data_start__ = ABSOLUTE(.);
+		*(.data)
+		*(.data.*)
+		*(.data)
+		*data.*(.text*)
+		. = ALIGN(4);
+	} >iwram =0xFF
+
+	.bss ALIGN(4) (NOLOAD) :
+	{
+		__bss_start = ABSOLUTE(.);
+		__bss_start__ = ABSOLUTE(.);
+		*(.bss)
+		*bss.*(.text*)
+		. = ALIGN(4);
+		__bss_end__ = ABSOLUTE(.);
+	} AT>iwram
+
+	.ewram __ewram_start : AT(__ewram_start)
+	{
+		__ewram_start__ = ABSOLUTE(.);
+		*(.ewram)
+		*ewram.*(.text*)
+		. = ALIGN(4);
+		__ewram_end__ = ABSOLUTE(.);
+	} >ewram
+
+	.sbss ALIGN(4) (NOLOAD) :
+	{
+		__sbss_start = ABSOLUTE(.);
+		__sbss_start__ = ABSOLUTE(.);
+		*(.sbss)
+		*sbss.*(.text*)
+		. = ALIGN(4);
+		__sbss_end__ = ABSOLUTE(.);
+	} AT>ewram
+}

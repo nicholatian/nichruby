@@ -13,7 +13,7 @@
 #ifndef INC__NICHRUBY_SUPTYPES_H
 #define INC__NICHRUBY_SUPTYPES_H
 
-#include <uni/types/int.h>
+#include "const/types/int.h"
 
 typedef u16 col_t;
 typedef u16 monid_t;

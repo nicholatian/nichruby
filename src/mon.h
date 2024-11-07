@@ -10,8 +10,8 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__MON_H
-#define INC__MON_H
+#ifndef INC__NICHRUBY_MON_H
+#define INC__NICHRUBY_MON_H
 
 #include "suptypes.h"
 
@@ -211,4 +211,4 @@ struct evolution
 	u16 method, param, new_mon;
 };
 
-#endif /* INC__MON_H */
+#endif /* INC__NICHRUBY_MON_H */

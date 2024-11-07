@@ -10,12 +10,12 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__SAVEDATA_H
-#define INC__SAVEDATA_H
+#ifndef INC__NICHRUBY_SAVEDATA_H
+#define INC__NICHRUBY_SAVEDATA_H
 
 #include "map.h"
 #include "suptypes.h"
-#include <uni/types/vec.h>
+#include "const/types/vec.h"
 
 struct savblk1
 {
@@ -27,4 +27,4 @@ struct savblk1
 	u8 party_ct;
 };
 
-#endif /* INC__SAVEDATA_H */
+#endif /* INC__NICHRUBY_SAVEDATA_H */

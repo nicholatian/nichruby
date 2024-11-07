@@ -10,11 +10,23 @@
 
 /* DEFINITION MODULE */
 
-#ifndef INC__BASE_GBA_H
-#define INC__BASE_GBA_H
+#ifndef INC__NICHRUBY_CONST_GBA_H
+#define INC__NICHRUBY_CONST_GBA_H
 
-#define D_IWRAM __attribute__( ( section( "iwram" ) ) )
-#define D_EWRAM __attribute__( ( section( "ewram" ) ) )
+#include "ldglobls.h"
+
+/* SBSS ("speedy BSS") is data in IWRAM */
+#define SBSS __attribute__( ( section( "sbss" ) ) )
+/* BSS ("block start symbol") is data in EWRAM */
+#define BSS __attribute__( ( section( "bss" ) ) )
+/* TEXT32 is code in IWRAM */
+#define TEXT32 __attribute__( ( section( "text32" ) ) )
+/* TEXT16 is code in EWRAM */
+#define TEXT16 __attribute__( ( section( "text16" ) ) )
+
+extern const ptri soundinfo_ptr;
+extern const ptri irq_check;
+extern const ptri irq_vector;
 
 enum
 {
@@ -37,118 +49,198 @@ enum
 
 enum
 {
-	EWRAM_SZ = 0x40000,
-	IWRAM_SZ = 0x8000,
-	PAL_SZ   = 0x400,
-	VRAM_SZ  = 0x18000,
-	SRAM_SZ  = 0x10000
-};
-
-enum
-{
 	OAM_SZ = 0x400
 };
 
+/* I/O register offsets */
 enum
 {
-	/* Extended working RAM */
-	EWRAM = 0x2000000,
-	/* Internal working RAM */
-	IWRAM = 0x3000000,
-	/* Memory-mapped I/O */
-	IO = 0x4000000,
-	/* Palette RAM */
-	PAL = 0x5000000,
-	/* Video RAM */
-	VRAM = 0x6000000,
-	/* “Object Attribute Memory” */
-	OAM = 0x7000000,
-	/* Read only memory (Game pak) */
-	ROM = 0x8000000,
-	/* Static RAM (save file) */
-	SRAM = 0xE000000
-};
+	IO_OFFS_DISPCNT = 0x0,
+	IO_OFFS_DISPSTAT = 0x4,
+	IO_OFFS_VCOUNT = 0x6,
+	IO_OFFS_BG0CNT = 0x8,
+	IO_OFFS_BG1CNT = 0xa,
+	IO_OFFS_BG2CNT = 0xc,
+	IO_OFFS_BG3CNT = 0xe,
+	IO_OFFS_BG0HOFS = 0x10,
+	IO_OFFS_BG0VOFS = 0x12,
+	IO_OFFS_BG1HOFS = 0x14,
+	IO_OFFS_BG1VOFS = 0x16,
+	IO_OFFS_BG2HOFS = 0x18,
+	IO_OFFS_BG2VOFS = 0x1a,
+	IO_OFFS_BG3HOFS = 0x1c,
+	IO_OFFS_BG3VOFS = 0x1e,
+	IO_OFFS_BG2PA = 0x20,
+	IO_OFFS_BG2PB = 0x22,
+	IO_OFFS_BG2PC = 0x24,
+	IO_OFFS_BG2PD = 0x26,
+	IO_OFFS_BG2X_L = 0x28,
+	IO_OFFS_BG2X_H = 0x2a,
+	IO_OFFS_BG2Y_L = 0x2c,
+	IO_OFFS_BG2Y_H = 0x2e,
+	IO_OFFS_BG3PA = 0x30,
+	IO_OFFS_BG3PB = 0x32,
+	IO_OFFS_BG3PC = 0x34,
+	IO_OFFS_BG3PD = 0x36,
+	IO_OFFS_BG3X_L = 0x38,
+	IO_OFFS_BG3X_H = 0x3a,
+	IO_OFFS_BG3Y_L = 0x3c,
+	IO_OFFS_BG3Y_H = 0x3e,
+	IO_OFFS_WIN0H = 0x40,
+	IO_OFFS_WIN1H = 0x42,
+	IO_OFFS_WIN0V = 0x44,
+	IO_OFFS_WIN1V = 0x46,
+	IO_OFFS_WININ = 0x48,
+	IO_OFFS_WINOUT = 0x4a,
+	IO_OFFS_MOSAIC = 0x4c,
+	IO_OFFS_BLDCNT = 0x50,
+	IO_OFFS_BLDALPHA = 0x52,
+	IO_OFFS_BLDY = 0x54,
 
-enum
-{
-	/* Display control */
-	DISPCNT = IO + 0x0,
-	/* “Green swap” (undocumented, unused) */
-	GREENSWAP = IO + 0x2,
-	/* Display stat (?) */
-	DISPSTAT = IO + 0x4,
-	/* Vertical counter for the currently drawn scanline */
-	VCOUNT = IO + 0x6,
-	/* BG 0 control */
-	BG0CNT = IO + 0x8,
-	/* BG 1 control */
-	BG1CNT = IO + 0xA,
-	/* BG 2 control */
-	BG2CNT = IO + 0xC,
-	/* BG 3 control */
-	BG3CNT = IO + 0xE,
-	/* BG 0 horizontal offset */
-	BG0HOFS = IO + 0x10,
-	/* BG 0 vertical offset */
-	BG0VOFS = IO + 0x12,
-	/* BG 1 horizontal offset */
-	BG1HOFS = IO + 0x14,
-	/* BG 1 vertical offset */
-	BG1VOFS = IO + 0x16,
-	/* BG 2 horizontal offset */
-	BG2HOFS = IO + 0x18,
-	/* BG 2 vertical offset */
-	BG2VOFS = IO + 0x1A,
-	/* BG 3 horizontal offset */
-	BG3HOFS = IO + 0x1C,
-	/* BG 3 vertical offset */
-	BG3VOFS = IO + 0x1E,
-	/* BG 2 rotation/scaling parameter A (dx) */
-	BG2PA = IO + 0x20,
-	/* BG 2 rotation/scaling parameter B (dmx) */
-	BG2PB = IO + 0x22,
-	/* BG 2 rotation/scaling parameter C (dy) */
-	BG2PC = IO + 0x24,
-	/* BG 2 rotation/scaling parameter D (dmy) */
-	BG2PD = IO + 0x26,
-	/* BG 2 reference point X coordinate, lower 16 bits */
-	BG2X_L = IO + 0x28,
-	/* BG 2 reference point X coordinate, upper 12 bits */
-	BG2X_H = IO + 0x2A,
-	/* BG 2 reference point Y coordinate, lower 16 bits */
-	BG2Y_L = IO + 0x2C,
-	/* BG 2 reference point Y coordinate, upper 12 bits */
-	BG2Y_H = IO + 0x2E,
-	/* BG 3 rotation/scaling parameter A (dx) */
-	BG3PA = IO + 0x30,
-	/* BG 3 rotation/scaling parameter B (dmx) */
-	BG3PB = IO + 0x32,
-	/* BG 3 rotation/scaling parameter C (dy) */
-	BG3PC = IO + 0x34,
-	/* BG 3 rotation/scaling parameter D (dmy) */
-	BG3PD = IO + 0x36,
-	/* BG 3 reference point X coordinate, lower 16 bits */
-	BG3X_L = IO + 0x38,
-	/* BG 3 reference point X coordinate, upper 12 bits */
-	BG3X_H = IO + 0x3A,
-	/* BG 3 reference point Y coordinate, lower 16 bits */
-	BG3Y_L = IO + 0x3C,
-	/* BG 3 reference point Y coordinate, upper 12 bits */
-	BG3Y_H = IO + 0x3E,
-	/* Window 0 horizontal size */
-	WIN0H = IO + 0x40,
-	/* Window 1 horizontal size */
-	WIN1H = IO + 0x42,
-	/* Window 0 vertical size */
-	WIN0V = IO + 0x44,
-	/* Window 1 vertical size */
-	WIN1V = IO + 0x46,
-	/* Window inside control */
-	WININ = IO + 0x48,
-	/* Window outside control */
-	WINOUT = IO + 0x4A,
-	/* Mosaic control register */
-	MOSAIC = IO + 0x4C
+	IO_OFFS_SOUND1CNT = 0x60,
+	IO_OFFS_SOUND1CNT_L = 0x60,
+	IO_OFFS_NR10 = 0x60,
+	IO_OFFS_SOUND1CNT_H = 0x62,
+	IO_OFFS_NR11 = 0x62,
+	IO_OFFS_NR12 = 0x63,
+	IO_OFFS_SOUND1CNT_X = 0x64,
+	IO_OFFS_NR13 = 0x64,
+	IO_OFFS_NR14 = 0x65,
+	IO_OFFS_SOUND2CNT = 0x68,
+	IO_OFFS_SOUND2CNT_L = 0x68,
+	IO_OFFS_NR21 = 0x68,
+	IO_OFFS_NR22 = 0x69,
+	IO_OFFS_SOUND2CNT_H = 0x6c,
+	IO_OFFS_NR23 = 0x6c,
+	IO_OFFS_NR24 = 0x6d,
+	IO_OFFS_SOUND3CNT = 0x70,
+	IO_OFFS_SOUND3CNT_L = 0x70,
+	IO_OFFS_NR30 = 0x70,
+	IO_OFFS_SOUND3CNT_H = 0x72,
+	IO_OFFS_NR31 = 0x72,
+	IO_OFFS_NR32 = 0x73,
+	IO_OFFS_SOUND3CNT_X = 0x74,
+	IO_OFFS_NR33 = 0x74,
+	IO_OFFS_NR34 = 0x75,
+	IO_OFFS_SOUND4CNT = 0x78,
+	IO_OFFS_SOUND4CNT_L = 0x78,
+	IO_OFFS_NR41 = 0x78,
+	IO_OFFS_NR42 = 0x79,
+	IO_OFFS_SOUND4CNT_H = 0x7c,
+	IO_OFFS_NR43 = 0x7c,
+	IO_OFFS_NR44 = 0x7d,
+	IO_OFFS_SOUNDCNT = 0x80,
+	IO_OFFS_SOUNDCNT_L = 0x80,
+	IO_OFFS_NR50 = 0x80,
+	IO_OFFS_NR51 = 0x81,
+	IO_OFFS_SOUNDCNT_H = 0x82,
+	IO_OFFS_SOUNDCNT_X = 0x84,
+	IO_OFFS_NR52 = 0x84,
+	IO_OFFS_SOUNDBIAS = 0x88,
+	IO_OFFS_WAVE_RAM = 0x90,
+	IO_OFFS_WAVE_RAM0 = 0x90,
+	IO_OFFS_WAVE_RAM0_L = 0x90,
+	IO_OFFS_WAVE_RAM0_H = 0x92,
+	IO_OFFS_WAVE_RAM1 = 0x94,
+	IO_OFFS_WAVE_RAM1_L = 0x94,
+	IO_OFFS_WAVE_RAM1_H = 0x96,
+	IO_OFFS_WAVE_RAM2 = 0x98,
+	IO_OFFS_WAVE_RAM2_L = 0x98,
+	IO_OFFS_WAVE_RAM2_H = 0x9a,
+	IO_OFFS_WAVE_RAM3 = 0x9c,
+	IO_OFFS_WAVE_RAM3_L = 0x9c,
+	IO_OFFS_WAVE_RAM3_H = 0x9e,
+	IO_OFFS_FIFO = 0xa0,
+	IO_OFFS_FIFO_A = 0xa0,
+	IO_OFFS_FIFO_A_L = 0xa0,
+	IO_OFFS_FIFO_A_H = 0xa2,
+	IO_OFFS_FIFO_B = 0xa4,
+	IO_OFFS_FIFO_B_L = 0xa4,
+	IO_OFFS_FIFO_B_H = 0xa6,
+
+	IO_OFFS_DMA0 = 0xb0,
+	IO_OFFS_DMA0SAD = 0xb0,
+	IO_OFFS_DMA0SAD_L = 0xb0,
+	IO_OFFS_DMA0SAD_H = 0xb2,
+	IO_OFFS_DMA0DAD = 0xb4,
+	IO_OFFS_DMA0DAD_L = 0xb4,
+	IO_OFFS_DMA0DAD_H = 0xb6,
+	IO_OFFS_DMA0CNT = 0xb8,
+	IO_OFFS_DMA0CNT_L = 0xb8,
+	IO_OFFS_DMA0CNT_H = 0xba,
+	IO_OFFS_DMA1 = 0xbc,
+	IO_OFFS_DMA1SAD = 0xbc,
+	IO_OFFS_DMA1SAD_L = 0xbc,
+	IO_OFFS_DMA1SAD_H = 0xbe,
+	IO_OFFS_DMA1DAD = 0xc0,
+	IO_OFFS_DMA1DAD_L = 0xc0,
+	IO_OFFS_DMA1DAD_H = 0xc2,
+	IO_OFFS_DMA1CNT = 0xc4,
+	IO_OFFS_DMA1CNT_L = 0xc4,
+	IO_OFFS_DMA1CNT_H = 0xc6,
+	IO_OFFS_DMA2 = 0xc8,
+	IO_OFFS_DMA2SAD = 0xc8,
+	IO_OFFS_DMA2SAD_L = 0xc8,
+	IO_OFFS_DMA2SAD_H = 0xca,
+	IO_OFFS_DMA2DAD = 0xcc,
+	IO_OFFS_DMA2DAD_L = 0xcc,
+	IO_OFFS_DMA2DAD_H = 0xce,
+	IO_OFFS_DMA2CNT = 0xd0,
+	IO_OFFS_DMA2CNT_L = 0xd0,
+	IO_OFFS_DMA2CNT_H = 0xd2,
+	IO_OFFS_DMA3 = 0xd4,
+	IO_OFFS_DMA3SAD = 0xd4,
+	IO_OFFS_DMA3SAD_L = 0xd4,
+	IO_OFFS_DMA3SAD_H = 0xd6,
+	IO_OFFS_DMA3DAD = 0xd8,
+	IO_OFFS_DMA3DAD_L = 0xd8,
+	IO_OFFS_DMA3DAD_H = 0xda,
+	IO_OFFS_DMA3CNT = 0xdc,
+	IO_OFFS_DMA3CNT_L = 0xdc,
+	IO_OFFS_DMA3CNT_H = 0xde,
+
+	IO_OFFS_TM0CNT = 0x100,
+	IO_OFFS_TM0CNT_L = 0x100,
+	IO_OFFS_TM0CNT_H = 0x102,
+	IO_OFFS_TM1CNT = 0x104,
+	IO_OFFS_TM1CNT_L = 0x104,
+	IO_OFFS_TM1CNT_H = 0x106,
+	IO_OFFS_TM2CNT = 0x108,
+	IO_OFFS_TM2CNT_L = 0x108,
+	IO_OFFS_TM2CNT_H = 0x10a,
+	IO_OFFS_TM3CNT = 0x10c,
+	IO_OFFS_TM3CNT_L = 0x10c,
+	IO_OFFS_TM3CNT_H = 0x10e,
+
+	IO_OFFS_SIOCNT = 0x128,
+	IO_OFFS_SIODATA8 = 0x12a,
+	IO_OFFS_SIODATA32 = 0x120,
+	IO_OFFS_SIOMLT_SEND = 0x12a,
+	IO_OFFS_SIOMLT_RECV = 0x120,
+	IO_OFFS_SIOMULTI0 = 0x120,
+	IO_OFFS_SIOMULTI1 = 0x122,
+	IO_OFFS_SIOMULTI2 = 0x124,
+	IO_OFFS_SIOMULTI3 = 0x126,
+
+	IO_OFFS_KEYINPUT = 0x130,
+	IO_OFFS_KEYCNT = 0x132,
+
+	IO_OFFS_RCNT = 0x134,
+
+	IO_OFFS_JOYCNT = 0x140,
+	IO_OFFS_JOYSTAT = 0x158,
+	IO_OFFS_JOY_RECV = 0x150,
+	IO_OFFS_JOY_RECV_L = 0x150,
+	IO_OFFS_JOY_RECV_H = 0x152,
+	IO_OFFS_JOY_TRANS = 0x154,
+	IO_OFFS_JOY_TRANS_L = 0x154,
+	IO_OFFS_JOY_TRANS_H = 0x156,
+
+	IO_OFFS_IME = 0x208,
+	IO_OFFS_IE = 0x200,
+	IO_OFFS_IF = 0x202,
+
+	IO_OFFS_WAITCNT = 0x204
 };
 
 /* input keys */
@@ -182,4 +274,4 @@ enum
 	KEYMASK_R     = 1 << KEY_R
 };
 
-#endif /* INC__BASE_GBA_H */
+#endif /* INC__NICHRUBY_CONST_GBA_H */

@@ -8,8 +8,9 @@
  *                    Released under BSD-2-Clause                    *
 \*********************************************************************/
 
-/* STATE MODULE */
+#ifndef INC__NICHRUBY_CONST_TYPES_GBA_H
+#define INC__NICHRUBY_CONST_TYPES_GBA_H
 
-#include "save.h"
+typedef __UINT16_TYPE__ col_t;
 
-void clr_tvdata( void ) {}
+#endif /* INC__NICHRUBY_CONST_TYPES_GBA_H */
