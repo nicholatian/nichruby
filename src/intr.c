@@ -17,14 +17,48 @@
 
 #include "const/gba.h"
 
-SBSS struct intr_state intr_state;
+SBSS volatile struct intr_state intr_state;
 
-void intr_state_init( void )
+SBSS const PFN_intr_func intr_table[MAX_INTR] = {
+	intr_hblank,
+	intr_vblank,
+	intr_vcount,
+	intr_serial,
+	intr_timer0,
+	intr_timer1,
+	intr_timer2,
+	intr_timer3,
+	intr_dma0,
+	intr_dma1,
+	intr_dma2,
+	intr_dma3,
+	intr_key,
+	intr_gamepak
+};
+
+SBSS const u8 intr_prior[MAX_INTR] = {
+	0,
+	2,
+	2,
+	0,
+	1,
+	1,
+	1,
+	0,
+	0,
+	1,
+	1,
+	4,
+	5,
+	5
+};
+
+TEXT32 void intr_state_init( void )
 {
 	memset( &intr_state, 0, sizeof intr_state );
 }
 
-void intr_hblank( void )
+TEXT32 void intr_hblank( void )
 {
 	ptri i;
 
@@ -40,7 +74,7 @@ void intr_hblank( void )
 	}
 }
 
-void intr_vblank( void )
+TEXT32 void intr_vblank( void )
 {
 	ptri i;
 
@@ -56,7 +90,7 @@ void intr_vblank( void )
 	}
 }
 
-void intr_vcount( void )
+TEXT32 void intr_vcount( void )
 {
 	ptri i;
 
@@ -68,7 +102,7 @@ void intr_vcount( void )
 	}
 }
 
-void intr_serial( void )
+TEXT32 void intr_serial( void )
 {
 	ptri i;
 
@@ -80,15 +114,15 @@ void intr_serial( void )
 	}
 }
 
-void intr_timer0( void ) {}
-void intr_timer1( void ) {}
-void intr_timer2( void ) {}
-void intr_timer3( void ) {}
+TEXT32 void intr_timer0( void ) {}
+TEXT32 void intr_timer1( void ) {}
+TEXT32 void intr_timer2( void ) {}
+TEXT32 void intr_timer3( void ) {}
 
-void intr_dma0( void ) {}
-void intr_dma1( void ) {}
-void intr_dma2( void ) {}
-void intr_dma3( void ) {}
+TEXT32 void intr_dma0( void ) {}
+TEXT32 void intr_dma1( void ) {}
+TEXT32 void intr_dma2( void ) {}
+TEXT32 void intr_dma3( void ) {}
 
-void intr_key( void ) {}
-void intr_gamepak( void ) {}
+TEXT32 void intr_key( void ) {}
+TEXT32 void intr_gamepak( void ) {}

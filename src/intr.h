@@ -26,6 +26,25 @@ enum
 	MAX_CALLBACKS = 4
 };
 
+enum
+{
+	INTR_HBLANK,
+	INTR_VBLANK,
+	INTR_VCOUNT,
+	INTR_SERIAL,
+	INTR_TIMER0,
+	INTR_TIMER1,
+	INTR_TIMER2,
+	INTR_TIMER3,
+	INTR_DMA0,
+	INTR_DMA1,
+	INTR_DMA2,
+	INTR_DMA3,
+	INTR_KEY,
+	INTR_GAMEPAK,
+	MAX_INTR
+};
+
 struct intr_state
 {
 	unsigned hblank_i : 10;
@@ -41,7 +60,9 @@ struct intr_state
 
 extern struct intr_state intr_state;
 
-void intr_state_init( void );
+extern const PFN_intr_func intr_table[MAX_INTR];
+extern const u8 intr_prior[MAX_INTR];
+
 void intr_hblank( void );
 void intr_vblank( void );
 void intr_vcount( void );

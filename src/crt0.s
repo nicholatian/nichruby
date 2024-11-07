@@ -111,6 +111,7 @@ init:
 	MOV     R0, #0x3000000
 	MOV     R1, #0x7D00
 	ORR     SP, R0, R1
+
 	@ branch to Thumb-1 since we're done MSRing
 	ADD     R0, PC, #1
 	BX      R0
@@ -152,12 +153,11 @@ init:
 	LDR     R2, =ld_text16_len
 	BL      .Lmemcpy
 
-	MOV     R1, #3      @
+	@ load the interrupt routine
+	MOV     R1, #4      @
 	LSL     R1, R1, #24 @
-	MOV     R2, #0x80   @
-	LSL     R2, R2, #8  @
-	ORR     R1, R1, R2  @
-	SUB     R1, #4      @ ~LDR #0x3007FFC
+	SUB     R1, #4      @ ~LDR #0x3FFFFFC
+	@ #0x3FFFFFC is a mirror of #0x3007FFC
 	ADR     R0, intr_main
 	STR     R0, [R1]
 	MOV     R0, #0
@@ -245,6 +245,39 @@ init:
 .code 32
 .balign 4, 0
 .section text32
+
+@ overview of the nichruby interrupt routine
+@
+@ - interrupts are not nesting
+@
+@ this assembly routine is stored in IWRAM at runtime and physically
+@ handles interrupts.
+@ it passes control to a fixed list of "core interrupt handlers" which
+@ are known C routines corresponding to each kind of interrupt possible
+@ on the GBA.
+@ for sanity's sake, it switches to system mode (with system stack)
+@ before branching into these routines.
+@ these "core handlers" serve as the bridge to nichruby's higher-level
+@ interrupt system, upon which the asynchronous event system of the
+@ engine is built, including callbacks and so on.
+@ this assembly routine will iterate through all "core handlers" for
+@ each interrupt requested by the hardware, one by one, until all are
+@ acknowledged.
+@ additionally, it will prioritise which ones to handle first using the
+@ values given in the intr_prior symbol, which is an array of u8s. 0 is
+@ the highest priority and 255 is the lowest - it will iterate through
+@ the whole list, handle all of the highest-priority ones, then the
+@ next highest, and so on, until they are all clear. interrupts of the
+@ same priority will be handled indeterminate relative to each other.
+
+/* wip
+intr_main:
+	MOV     R0, #0x4000000
+	ADD     R0, R0, #0x200
+	@ disable IME
+	MOV     R1, #0
+	STR     R1, [R0, #8]
+*/
 
 intr_main:
 	ldr r3, =ld_io_start
