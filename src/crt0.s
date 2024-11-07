@@ -101,12 +101,23 @@ gpio_portreadable:
 .balign 4, 0
 
 init:
-	ADD     R0, pc, #1
+	MOV     R0, PSR_IRQ_MODE
+	MSR     CPSR, R0
+	MOV     R0, #0x3000000
+	MOV     R1, #0x7F00
+	ORR     SP, R0, R1
+	MOV     R0, PSR_SYS_MODE
+	MSR     CPSR, R0
+	MOV     R0, #0x3000000
+	MOV     R1, #0x7D00
+	ORR     SP, R0, R1
+	@ branch to Thumb-1 since we're done MSRing
+	ADD     R0, PC, #1
 	BX      R0
 
 .code 16
 	@ turn off the display
-	MOV     R0, #0x40
+	MOV     R0, #4      @
 	LSL     R0, R0, #24 @ ~LDR R0, #0x4000000
 	MOV     R1, #0x80
 	STRH    R1, [R0]
@@ -115,9 +126,9 @@ init:
 	LSL     R1, R1, #4
 	ADD     R1, R1, #4
 	ADD     R0, R0, R1
-	MOV     R1, #0x43
-	MOV     R2, #0x17
-	LSL     R1, R1, #8
+	MOV     R1, #0x43  @
+	MOV     R2, #0x17  @
+	LSL     R1, R1, #8 @
 	ORR     R1, R1, R2 @ ~LDR R1, #0x4317
 	STRH    R1, [R0]
 	@ copy over speedy BSS
@@ -141,13 +152,12 @@ init:
 	LDR     R2, =ld_text16_len
 	BL      .Lmemcpy
 
-	MOV     R0, PSR_IRQ_MODE
-	MSR     cpsr_cf, R0
-	LDR     SP, sp_irq
-	MOV     R0, PSR_SYS_MODE
-	MSR     cpsr_cf, R0
-	LDR     SP, sp_sys
-	LDR     R1, =intr_vector
+	MOV     R1, #3      @
+	LSL     R1, R1, #24 @
+	MOV     R2, #0x80   @
+	LSL     R2, R2, #8  @
+	ORR     R1, R1, R2  @
+	SUB     R1, #4      @ ~LDR #0x3007FFC
 	ADR     R0, intr_main
 	STR     R0, [R1]
 	MOV     R0, #0
@@ -160,8 +170,7 @@ init:
 	B       init
 
 .balign 4, 0
-sp_sys: .word ld_iwram_end - 0x1A0
-sp_irq: .word ld_iwram_end - 0x60
+
 .pool
 
 @ memcpy
@@ -204,7 +213,7 @@ sp_irq: .word ld_iwram_end - 0x60
 	CMP     R8, R9
 	BGE     .Lcpyby24
 
-	@ restore R2 as size before continuing as it was trashed
+	@ restore R2 as the count before continuing as it was trashed
 	MOV     R2, R8
 
 .Lcpybyword:
