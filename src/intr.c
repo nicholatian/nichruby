@@ -21,7 +21,7 @@ SBSS struct intr_state intr_state;
 
 void intr_state_init( void )
 {
-	memset( &intr_state, 0, sizeof( struct intr_state ) );
+	memset( &intr_state, 0, sizeof intr_state );
 }
 
 void intr_hblank( void )
@@ -29,7 +29,7 @@ void intr_hblank( void )
 	ptri i;
 
 	intr_state.hblank_reset =
-		intr_state.hblank_i + 1 >= ( 1 << 10 ) ? 1 : 0;
+		(intr_state.hblank_i + 1) >= ( 1 << 10 ) ? 1 : 0;
 	intr_state.hblank_i++;
 
 	for( i = 0;
@@ -45,7 +45,7 @@ void intr_vblank( void )
 	ptri i;
 
 	intr_state.vblank_reset =
-		intr_state.vblank_i + 1 >= ( 1 << 10 ) ? 1 : 0;
+		(intr_state.vblank_i + 1) >= ( 1 << 10 ) ? 1 : 0;
 	intr_state.vblank_i++;
 
 	for( i = 0;
