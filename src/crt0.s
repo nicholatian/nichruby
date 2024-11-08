@@ -24,6 +24,7 @@
 .globl intr_main
 .globl main
 .globl intr_table
+.globl intr_prior
 
 .section .init
 .code 32
@@ -270,14 +271,184 @@ init:
 @ next highest, and so on, until they are all clear. interrupts of the
 @ same priority will be handled indeterminate relative to each other.
 
-/* wip
 intr_main:
+	PUSH    {R4-R5}
 	MOV     R0, #0x4000000
 	ADD     R0, R0, #0x200
 	@ disable IME
 	MOV     R1, #0
 	STR     R1, [R0, #8]
-*/
+
+.Lenumerate_irqs:
+	@ load IE and IF
+	LDRH    R1, [R0] @ IE
+	LDRH    R2, [R0, #2] @ IF
+	LDR     R3, =intr_prior
+	MOV     R4, #0xFF @ current lowest active priority
+
+.Lcheck_vblank:
+	ANDS    R0, R1, IRQ_MASK_VBLANK
+	BEQ     .Lcheck_hblank
+	ANDS    R0, R2, IRQ_MASK_VBLANK
+	BEQ     .Lcheck_hblank
+
+	LDRB    R5, [R3, #0]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_hblank:
+	ANDS    R0, R1, IRQ_MASK_HBLANK
+	BEQ     .Lcheck_vcount
+	ANDS    R0, R2, IRQ_MASK_HBLANK
+	BEQ     .Lcheck_vcount
+
+	LDRB    R5, [R3, #1]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_vcount:
+	ANDS    R0, R1, IRQ_MASK_VCOUNT
+	BEQ     .Lcheck_timer0
+	ANDS    R0, R2, IRQ_MASK_VCOUNT
+	BEQ     .Lcheck_timer0
+
+	LDRB    R5, [R3, #2]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_timer0:
+	ANDS    R0, R1, IRQ_MASK_TIMER0
+	BEQ     .Lcheck_timer1
+	ANDS    R0, R2, IRQ_MASK_TIMER0
+	BEQ     .Lcheck_timer1
+
+	LDRB    R5, [R3, #3]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_timer1:
+	ANDS    R0, R1, IRQ_MASK_TIMER1
+	BEQ     .Lcheck_timer2
+	ANDS    R0, R2, IRQ_MASK_TIMER1
+	BEQ     .Lcheck_timer2
+
+	LDRB    R5, [R3, #4]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_timer2:
+	ANDS    R0, R1, IRQ_MASK_TIMER2
+	BEQ     .Lcheck_timer3
+	ANDS    R0, R2, IRQ_MASK_TIMER2
+	BEQ     .Lcheck_timer3
+
+	LDRB    R5, [R3, #5]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_timer3:
+	ANDS    R0, R1, IRQ_MASK_TIMER3
+	BEQ     .Lcheck_serial
+	ANDS    R0, R2, IRQ_MASK_TIMER3
+	BEQ     .Lcheck_serial
+
+	LDRB    R5, [R3, #6]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_serial:
+	ANDS    R0, R1, IRQ_MASK_SERIAL
+	BEQ     .Lcheck_dma0
+	ANDS    R0, R2, IRQ_MASK_SERIAL
+	BEQ     .Lcheck_dma0
+
+	LDRB    R5, [R3, #7]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_dma0:
+	ANDS    R0, R1, IRQ_MASK_DMA0
+	BEQ     .Lcheck_dma1
+	ANDS    R0, R2, IRQ_MASK_DMA0
+	BEQ     .Lcheck_dma1
+
+	LDRB    R5, [R3, #8]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_dma1:
+	ANDS    R0, R1, IRQ_MASK_DMA1
+	BEQ     .Lcheck_dma2
+	ANDS    R0, R2, IRQ_MASK_DMA1
+	BEQ     .Lcheck_dma2
+
+	LDRB    R5, [R3, #9]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_dma2:
+	ANDS    R0, R1, IRQ_MASK_DMA2
+	BEQ     .Lcheck_dma3
+	ANDS    R0, R2, IRQ_MASK_DMA2
+	BEQ     .Lcheck_dma3
+
+	LDR     R5, [R3, #10]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_dma3:
+	ANDS    R0, R1, IRQ_MASK_DMA3
+	BEQ     .Lcheck_key
+	ANDS    R0, R2, IRQ_MASK_DMA3
+	BEQ     .Lcheck_key
+
+	LDRB    R5, [R3, #11]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_key:
+	ANDS    R0, R1, IRQ_MASK_KEY
+	BEQ     .Lcheck_gamepak
+	ANDS    R0, R2, IRQ_MASK_KEY
+	BEQ     .Lcheck_gamepak
+
+	LDRB    R5, [R3, #12]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lcheck_gamepak:
+	ANDS    R0, R1, IRQ_MASK_GAMEPAK
+	BEQ     .Lexec_vblank
+	ANDS    R0, R2, IRQ_MASK_GAMEPAK
+	BEQ     .Lexec_vblank
+
+	LDRB    R5, [R3, #13]
+	CMP     R5, R4
+	MOVLT   R4, R5 @ lower it if it is lower
+
+.Lexec_vblank:
+	ANDS    R0, R1, IRQ_MASK_VBLANK
+	BEQ     .Lexec_hblank
+	ANDS    R0, R2, IRQ_MASK_VBLANK
+	BEQ     .Lexec_hblank
+
+	LDRB    R5, [R3, #0]
+	CMP     R5, R4
+	BNE     .Lexec_hblank
+
+	LDR     R5, =intr_table
+	CMP     R5, #0
+	BXEQ    LR @ don't execute it if the handler is NULL
+
+	@ save the old values of IME, SPSR, and LR for nesting IRQs
+	MOV     R5, #0x4000000
+	ADD     R5, R5, #0x200
+	LDR     R0, [R5, #8] @ IME is now in R0
+	MOV     R6, #0
+	STR     R6, [R5, #8]
+
+	MRS     R7, SPSR
+	PUSH    {R0,R7,LR}
 
 intr_main:
 	ldr r3, =ld_io_start
