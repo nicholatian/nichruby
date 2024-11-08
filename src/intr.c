@@ -20,14 +20,14 @@
 SBSS volatile struct intr_state intr_state;
 
 SBSS const PFN_intr_func intr_table[MAX_INTR] = {
-	intr_hblank,
 	intr_vblank,
+	intr_hblank,
 	intr_vcount,
-	intr_serial,
 	intr_timer0,
 	intr_timer1,
 	intr_timer2,
 	intr_timer3,
+	intr_serial,
 	intr_dma0,
 	intr_dma1,
 	intr_dma2,
@@ -37,13 +37,13 @@ SBSS const PFN_intr_func intr_table[MAX_INTR] = {
 };
 
 SBSS const u8 intr_prior[MAX_INTR] = {
-	0,
-	2,
 	2,
 	0,
+	2,
 	1,
 	1,
 	1,
+	0,
 	0,
 	0,
 	1,

@@ -28,14 +28,14 @@ enum
 
 enum
 {
-	INTR_HBLANK,
 	INTR_VBLANK,
+	INTR_HBLANK,
 	INTR_VCOUNT,
-	INTR_SERIAL,
 	INTR_TIMER0,
 	INTR_TIMER1,
 	INTR_TIMER2,
 	INTR_TIMER3,
+	INTR_SERIAL,
 	INTR_DMA0,
 	INTR_DMA1,
 	INTR_DMA2,
@@ -63,14 +63,14 @@ extern struct intr_state intr_state;
 extern const PFN_intr_func intr_table[MAX_INTR];
 extern const u8 intr_prior[MAX_INTR];
 
-void intr_hblank( void );
 void intr_vblank( void );
+void intr_hblank( void );
 void intr_vcount( void );
-void intr_serial( void );
 void intr_timer0( void );
 void intr_timer1( void );
 void intr_timer2( void );
 void intr_timer3( void );
+void intr_serial( void );
 void intr_dma0( void );
 void intr_dma1( void );
 void intr_dma2( void );
